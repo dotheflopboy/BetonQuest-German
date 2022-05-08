@@ -32,3 +32,6 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
+nav:
+  - '🚀 Home': index.md
+  - '📚 Documentation': Documentation/Events-List.md
