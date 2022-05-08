@@ -12,16 +12,16 @@ Running it is equal to the player clicking on the bone. The only argument is a n
 
 ## Chat player message `chat`
 
-This event will send the given message as the player. Therefore, it will look like as if the player did send the message. 
-The instruction string is the command, without leading slash. You can only use `%player%` as a variable in this event.
-Additional messages can be defined by separating them with `|` character. If you want to use a `|` character in the message use `\|`.
+Dieses Event sendet die angegebene Nachricht als Spieler. Daher sieht es so aus, als hätte der Spieler die Nachricht gesendet.
+Du kannst in diesem Event nur `%player%` als Variable verwenden.
+Zusätzliche Nachrichten können definiert werden, indem sie mit  `|`  getrennt werden. Wenn du `|` in der Nachricht werden willst nutze `\|`.
 
-If a plugin does not work with the sudo / command event you need to use this event.
+Wenn ein Plugin nicht mit dem sudo / command-Event funktioniert, musst du dieses Event verwenden.
 
 !!! example
     ``` YAML
-    sendMSG: "chat Hello!"
-    sendMultipleMSGs: "chat Hi %player%|ban %player%|pardon %player%"
+    sendMSG: "chat Hallo!"
+    sendMultipleMSGs: "chat Hey %player%|ban %player%|pardon %player%"
     sendPluginCommand: "chat /someCommand x y z"
     ```
 
@@ -29,7 +29,7 @@ If a plugin does not work with the sudo / command event you need to use this eve
  
 **persistent**, **static**
 
-This event removes all items from a chest at specified location. The only argument is a location.
+Dieses Event entfernt alle Gegenstände aus einer Truhe an einem bestimmten Ort. Das einzige Argument ist ein Standort.
 
 !!! example
     ```YAML
@@ -40,7 +40,11 @@ This event removes all items from a chest at specified location. The only argume
 
 **persistent**, **static**
 
-This works the same as `give` event, but it puts the items in a chest at specified location. The first argument is a location, the second argument is a list of items, like in `give` event. If the chest is full, the items will be dropped on the ground. The chest can be any other block with inventory, i.e. a hopper or a dispenser. BetonQuest will log an error to the console when this event is fired but there is no chest at specified location.
+Dies funktioniert genauso wie das `give` Event, aber es legt die Gegenstände in einer Truhe an einer bestimmten Stelle ab.
+Das erste Argument ist ein Ort, das zweite Argument ist eine Liste von Elementen, wie im `give` Event.
+Wenn die Truhe voll ist, werden die Gegenstände auf den Boden fallen gelassen.
+Die Truhe kann jeder andere Block mit Inventar sein, z. B. ein Trichter oder ein Spender.
+BetonQuest protokolliert einen Fehler in der Konsole, wenn dieses Ereignis ausgelöst wird, sich aber an der angegebenen Position keine Truhe befindet.
 
 !!! example
     ```YAML
@@ -51,7 +55,8 @@ This works the same as `give` event, but it puts the items in a chest at specifi
  
 **persistent**, **static**
 
-This event works the same as `take` event, but it takes items from a chest at specified location. The instruction string is defined in the same way as in `chestgive` event.
+Dieses Event funktioniert genauso wie das `Take` Event, aber es nimmt Gegenstände aus einer Truhe an einem bestimmten Ort. 
+Es wird genau so definiert wie das `chestgive` Event.
 
 !!! example
     ```YAML
@@ -60,7 +65,12 @@ This event works the same as `take` event, but it takes items from a chest at sp
 
 ## Clear entities: `clear`
 
-This event removes all specified mobs from the specified area. The first required argument is a list of mobs (taken from [here](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)) separated by commas. Next is location. After that there is the radius around the location (a positive number or a variable). You can also optionally specify `name:` argument, followed by name which removed mobs must have. You can use `marked:` argument to remove only mobs marked in `spawn` event.
+Dieses Event entfernt alle angegebenen Mobs aus dem angegebenen Bereich.
+Das erste erforderliche Argument ist eine Liste von Mobs (ausgesucht von [here](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)) durch Kommata abgetrennt.
+Als nächstes kommt der Standort.
+Danach folgt der Radius um den Standort (eine positive Zahl oder eine Variable). 
+Optional kannst du das Argument `name:` angeben, gefolgt vom Namen, den entfernte Mobs haben müssen.
+Du kannst das `marked:` Argument nutzen, um nur Mobs zu entfernen, die im `Spawn` Event markiert sind.
 
 !!! example
     ```YAML
@@ -69,14 +79,20 @@ This event removes all specified mobs from the specified area. The first require
 
 ## Compass: `compass`
 
-When you run this event, you can add or remove a compass destination for the player. You may also directly set the player's compass destination as well. When a destination is added the player will be able to select a specified location as a target of his compass. To select the target the player must open his backpack and click on the compass icon. The first argument is `add`,`del` or `set`, and second one is the name of the target, as defined in the _compass_ section. Note that if you set a target the player will not automatically have it added to their choices.
+Mit diesen Event kannst du ein Kompass-Ziel für den Spieler setzen oder löschen. You may also directly set the player's compass destination as well.
+Wenn ein Ziel hinzugefügt wird, kann der Spieler einen bestimmten Ort als Ziel seines Kompasses auswählen.
+Um das Ziel auszuwählen, muss der Spieler seinen Rucksack öffnen und auf das Kompasssymbol klicken.
+Das erste Argument ist `add`,`del` oder `set`, und der zweite ist der Name des Ziels, wie im Abschnitt _compass_ definiert. 
+Beachte: Wenn du ein Ziel setzt, wird es nicht automatisch als Ziel-Wahl des Spielers gesetzt.
 
-The destination must be defined in `compass` section. You can specify a name for the target in each language or just give a general name, and optionally add a custom item (from _items_ section) to be displayed in the backpack. Example of a compass target:
+Das Ziel muss im Abschnitt `compass` definiert sein. Du kannst für jede Sprache einen eigenen Ziel-Namen setzten oder einen allgemeinen Namen setzen, und optional ein eigenes item hinzufügen (aus dem _items_ Abschnitt) welches im Rucksack angezeigt wird.
+Beispiel für ein Kompassziel:
 
 ```YAML
 compass:
   beton:
     name:
+      de: Ziel
       en: Target
       pl: Cel
     location: 100;200;300;world
@@ -92,12 +108,12 @@ compass:
 
 **persistent**, **static**
 
-Runs specified command from the console. The instruction string is the command, without leading slash.
-You can use variables here, but variables other than `%player%` won't resolve if the event is fired from delayed `folder`
-and the player is offline now. You can define additional commands by separating them with `|` character.
-If you want to use a `|` character in the command use `\|`.
+Führt den angegebenen Befehl von der Konsole aus. Gebe den Befehl OHNE Schrägstrich an.
+Du kannst hier Variablen verwenden, aber andere Variablen als `%player%` werden nicht funktionieren, wenn das Event von einen verzögerten `folder` Event ausgelöst wird
+und der Spieler offline ist. Du kannst zusätzliche Befehle definieren, indem du sie mit dem Zeichen `|` trennst.
+Wenn du das Zeichen `|` in einen Befehl verwenden willst nutze `\|`.
 
-Looking for [run command as player](#sudo-sudo)?
+Suchst du nach [führe ein Befehl aus Spieler aus](#sudo-sudo)?
 
 !!! example
     ```YAML
@@ -106,7 +122,7 @@ Looking for [run command as player](#sudo-sudo)?
 
 ## Conversation: `conversation`
 
-Starts a conversation at location of the player. The only argument is ID of the conversation. This bypasses the conversation permission!
+Startet ein Gespräch am Standort des Spielers. Das einzige Argument ist die ID der Konversation. Dies umgeht die Konversations-Permission!
 
 !!! example
     ```YAML
@@ -115,7 +131,7 @@ Starts a conversation at location of the player. The only argument is ID of the 
 
 ## Damage player: `damage`
 
-Damages the player by specified amount of damage. The only argument is a number (can have floating point).
+Verletzt den Spieler um die angegebene Schadensmenge. Das einzige Argument ist eine Zahl (kann Gleitkommazahlen haben).
 
 !!! example
     ```YAML
@@ -126,7 +142,7 @@ Damages the player by specified amount of damage. The only argument is a number 
 
 **persistent**, **static**
 
-Delete the player points in a specified category.
+Löschst die Spielerpunkte in einer bestimmten Kategorie.
 
 !!! example
     ```YAML
@@ -137,7 +153,7 @@ Delete the player points in a specified category.
 
 **persistent**, **static**
 
-This event can open and close doors, trapdoors and fence gates. The syntax is exactly the same as in `lever` event above.
+Dieses Event kann Türen, Falltüren und Zauntore öffnen und schließen. Die Syntax ist genau dieselbe wie im obigen `lever` Event.
 
 !!! example
     ```YAML
@@ -146,7 +162,7 @@ This event can open and close doors, trapdoors and fence gates. The syntax is ex
 
 ## Remove Potion Effect: `deleffect`
 
-Removes the specified potion effects from the player. Use `any` instead of a list of types to remove all potion effects from the player.
+Entfernt die angegebenen Trankeffekte vom Spieler. Nutze `any` anstelle einer Liste von Typen, um alle Trankeffekte vom Spieler zu entfernen.
 
 !!! example
     ```YAML
@@ -155,7 +171,12 @@ Removes the specified potion effects from the player. Use `any` instead of a lis
 
 ## Potion Effect: `effect`
 
-Adds a specified potion effect to player. First argument is potion type. You can find all available types [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html). Second is integer defining how long the effect will last in seconds. Third argument, also integer, defines level of the effect (1 means first level). Add a parameter `ambient` to make potion particles appear more invisible (just like beacon effects). To hide particles add a parameter `hidden`. To hide the icon for the effect add `noicon`.
+Fügt dem Spieler einen bestimmten Trankeffekt hinzu.
+Das erste Argument ist der Tranktyp. Sie finden alle verfügbaren Typen [hier](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html). 
+Das zweite Argument ist eine Ganzzahl, die definiert, wie lange der Effekt in Sekunden anhält.
+Das dritte Argument, ebenfalls ganzzahlig, definiert die Stärke des Effekts (1 bedeutet erstes Level).
+Füge einen Parameter `ambient` hinzu, um Trankpartikel unsichtbarer erscheinen zu lassen (genauso wie Beacon-Effekte).
+Um Partikel zu verbergen, fügen Sie einen Parameter `hidden` hinzu. Um das Symbol für den Effekt auszublenden, fügen Sie `noicon` hinzu.
 
 !!! example
     ```YAML
@@ -166,7 +187,11 @@ Adds a specified potion effect to player. First argument is potion type. You can
 
 **static**
 
-Creates an explosion. It can make fire and destroy blocks. You can also define power, so be careful not to blow your server away. Default TNT power is 4, while Wither on creation is 7. First argument can be 0 or 1 and states if explosion will generate fire (like Ghast’s fireball). Second is also 0 or 1 but this defines if block will be destroyed or not. Third argument is the power (float number). At the end (4th attribute) there is location.
+Erzeugt eine Explosion. Es kann Feuer machen und Blöcke zerstören. Du kannst auch die Leistung definieren, also achte darauf, deinen Server nicht wegzublasen.
+Die Standard-TNT-Leistung ist 4, während Wither bei der Schöpfung 7 ist. Das erste Argument kann 0 oder 1 sein und gibt an, ob die Explosion Feuer erzeugen wird (wie Geister Feuerball).
+Das zweite Argument ist auch 0 oder 1, aber dies definiert, ob der Block zerstört wird oder nicht.
+Das dritte Argument ist die Leistung (Float-Zahl).
+Das letzte Argument ist der Ort.
 
 !!! example
     ```YAML
@@ -177,16 +202,18 @@ Creates an explosion. It can make fire and destroy blocks. You can also define p
 
 **persistent**, **static**
 
-It's something like a container for multiple events. You can use it to clarify your code.
-It also features optional delay and period measured in seconds (you can use ticks or minutes if you add `ticks` or `minutes` argument).
-It is persistent for events marked as _persistent_, which means that the events will be fired even after the player logs out.
-Beware though, all conditions are false when the player is offline (even inverted ones),
-so those events should not be blocked by any conditions!
-The only required argument is a list of events separated by commas.
+Es ist so etwas wie ein Container für mehrere Events. Du kannst es verwenden, um deinen Code zu verschönern.
+Es verfügt auch über eine optionale Verzögerung und einen in Sekunden gemessenen Zeitraum (Du kannst Ticks oder Minuten verwenden, indem du `ticks` oder `minutes` Argument hinzufügst).
+Es ist Konstant für Events markiert als _persistent_, was bedeutet, dass die Events auch nach dem Abmelden des Spielers ausgelöst werden.
+Beachten jedoch, dass alle Bedingungen falsch sind, wenn der Spieler offline ist (auch invertierte),
+diese Events sollten also nicht durch irgendwelche Bedingungen blockiert werden!
+Das einzige erforderliche Argument ist eine durch Kommas getrennte Liste von Events.
 
-There are also three optional arguments: `delay:`, `period:` and `random:`.
-Delay and Period is a number of seconds. Delay is the time before execution and period is the time between each event. It's optional and leaving it blank is the same as `delay:0` or `period:0`.
-Random is the amount of events, that will be randomly chosen to fire. It's optional and leaving it blank or omit it will fire all events.
+Es gibt auch drei optionale Argumente: `delay:`, `period:` und `random:`.
+Delay und Period ist eine Anzahl von Sekunden.
+Delay ist die Zeit vor der Ausführung und period ist die Zeit zwischen den einzelnen Events.
+Es ist optional und es leer zu lassen ist dasselbe wie `delay:0` oder `period:0`.
+Random ist die Anzahl der Events, die zufällig zum Auslösen ausgewählt werden. Es ist optional und wenn du es leer lässt oder weglässt, werden alle Events ausgelöst.
 
 !!! example
     ```YAML
@@ -195,7 +222,10 @@ Random is the amount of events, that will be randomly chosen to fire. It's optio
 
 ## Give Items: `give`
 
-Gives the player predefined items. They are specified exactly as in `item` condition - list separated by commas, every item can have amount separated by colon. Default amount is 1. If the player doesn't have required space in the inventory, the items are dropped on the ground, unless they are quest items. Then they will be put into the backpack. You can also specify `notify` keyword to display a simple message to the player about receiving items.
+Gibt dem Spieler vordefinierte Gegenstände. Sie werden genau so angegeben wie im  `item` Abschnitt definiert. Es können mehrere Gegenstände auf einmal gegeben werden, indem man sie mit einen Komma trennt, außerdem kann jeder Gegenstand eine Anzahl haben angegeben durch `:` gefolgt von der Anzahl nach den Gegenstand.
+Die Standard-Anzahl ist 1.
+Wenn der Spieler nicht den erforderlichen Platz im Inventar hat, werden die Gegenstände auf den Boden fallen gelassen, es sei denn, es handelt sich um Questgegenstände. Dann werden sie in den Rucksack gesteckt.
+Du kannst dan Parameter `notify` angeben, um dem Spieler eine einfache Nachricht über den Erhalt von Gegenständen anzuzeigen.
 
 !!! example
     ```YAML
@@ -204,7 +234,7 @@ Gives the player predefined items. They are specified exactly as in `item` condi
 
 ## Give journal: `givejournal`
 
-This event simply gives the player his journal. It acts the same way as **/j** command would.
+Dieses Event gibt dem Spieler einfach sein Tagebuch. Es verhält sich genauso wie der Befehl **/j**.
 
 !!! example
     ```YAML
@@ -215,7 +245,8 @@ This event simply gives the player his journal. It acts the same way as **/j** c
 
 **persistent**, **static**
 
-This works the same way as the normal point event but instead to manipulating the points for a category of a specific player it manipulates points in a global category. These global categories are player independent, so you could for example add a point to such a global category every time a player does a quest and give some special rewards for the 100th player who does the quest.
+Dies funktioniert auf die gleiche Weise wie das normale Punkte-Event, aber anstatt die Punkte für eine Kategorie eines bestimmten Spielers zu manipulieren, manipuliert es Punkte in einer globalen Kategorie.
+Diese globalen Kategorien sind Spieler unabhängig, so kannst du zum Beispiel jedes Mal, wenn ein Spieler eine Quest macht, einen Punkt zu einer solchen globalen Kategorie hinzufügen und dem 100. Spieler, der die Quest macht, einige besondere Belohnungen geben.
 
 !!! example
     ```YAML
@@ -226,7 +257,7 @@ This works the same way as the normal point event but instead to manipulating th
 
 **persistent**, **static**
 
-Works the same way as a normal tag event, but instead of setting a tag for one player it sets it globaly for all players.
+Funktioniert genauso wie ein normales Tag-Event, aber anstatt ein Tag für einen Spieler zu setzen, wird es global für alle Spieler gesetzt.
 
 !!! example
     ```YAML
@@ -235,25 +266,27 @@ Works the same way as a normal tag event, but instead of setting a tag for one p
 
 ## If else: `if`
 
-This event will check a condition, and based on the outcome it will run the first or second event. The instruction string is `if condition event1 else event2`, where `condition` is a condition ID and `event1` and `event2` are event IDs. `else` keyword is mandatory between events for no practical reason.
+Dieses Event prüft eine Bedingung und führt je nach Ergebnis das erste oder zweite Event aus.
+Wird folgendermaßen definiert: `if condition event1 else event2`, wobei `condition` eine Bedingung-ID ist und `event1` und `event2` Event-IDs sind.
+Das `else` Parameter ist ohne praktischen Grund zwischen den Events obligatorisch.
 
 !!! example
     ```YAML
-    if sun rain else sun
+    if sonnig lass_es_regnen else lass_es_sonnig_sein
     ```
 
 ## Journal: `journal`
 
 **static**
 
-Adds or deletes an entry to/from a player's journal. Journal entries have to be defined in the `journal` section. The
-first argument is the action to perform, the second one is the name of the entry if required. Changing journal entries
-will also reload the journal.
+Fügt einen Eintrag zum/aus dem Tagebuch eines Spielers hinzu oder löscht ihn. Tagebucheinträge müssen im Abschnitt `journal` definiert werden.
+Das erste Argument ist die auszuführende Aktion, der zweite ist der Name des Eintrags, falls erforderlich.
+Tagebucheinträge ändern wird auch das Journal neu laden.
 
-Possible actions are:
-- `add`: Adds a page to the journal.
-- `delete`: Deletes a page from the journal.
-- `update`: Refreshes the journal. This is especially useful when you need to update the main page.
+Mögliche Aktionen sind:
+- `add`: Fügt dem Tagebuch eine Seite hinzu.
+- `delete`: Löscht eine Seite aus dem Tagebuch
+- `update`: Läd das Tagebuch neu. Dies ist besonders nützlich, wenn du die Hauptseite aktualisieren musst.
 
 !!! example
     ```YAML
@@ -264,20 +297,20 @@ Possible actions are:
 
 ## Kill: `kill`
 
-Kills the player. Nothing else.
+Tötet den Spieler. Nichts anderes.
 
 ## Kill Mobs: `killmob`
  
 **persistent**, **static**
 
-Kills all mobs of given type at the location. First argument is
-the [type of the mob](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html). Next argument is the
-location. Third argument is the radius around the location, in which the mobs must be to get killed.  
-You can also specify `name:` argument, followed by the name of the mob which should get killed. All `_` characters will
-be replaced with spaces. If you want to kill only mobs that have been marked using the spawn mob event use `marked:`
-argument followed by the keyword.
-
-Only mobs that are in loaded chunks can be killed by using this event.
+Tötet alle Mobs des angegebenen Typs am Ort.
+Erstes Argument ist
+die [Art des Mobs](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html).
+Das nächste Argument ist der Ort.
+Drittes Argument ist der Radius um den Ort, in dem sich die Mobs aufhalten müssen, um getötet zu werden.
+Du kannst auch das Argument `name:` angeben, gefolgt vom Namen des Mobs, der getötet werden soll.
+Alle `_`-Zeichen werden durch Leerzeichen ersetzt. Wenn du nur Mobs töten möchtest, die mit dem Spawn-Mob-Event markiert wurden, verwende `marked:` Argument gefolgt vom Schlüsselwort.
+Mit diesem Event können nur Mobs getötet werden, die sich in geladenen Chunks befinden.
 
 !!! example
     ```YAML
@@ -286,7 +319,7 @@ Only mobs that are in loaded chunks can be killed by using this event.
 
 ## Language Event: `language`
 
-This event changes player's language to the specified one. There is only one argument, the language name.
+Dieses Event ändert die Sprache des Spielers in die angegebene Sprache. Es gibt nur ein Argument, den Sprachnamen.
 
 !!! example
     ```YAML
@@ -297,7 +330,7 @@ This event changes player's language to the specified one. There is only one arg
 
 **persistent**, **static**
 
-This event can switch a lever. The first argument is a location and the second one is state: `on`, `off` or `toggle`.
+Dieses Event kann einen Hebel umschalten. Das erste Argument ist ein Ort und das zweite ein Zustand: `on`, `off` oder `toggle`.
 
 !!! example
     ```YAML
@@ -308,7 +341,7 @@ This event can switch a lever. The first argument is a location and the second o
 
 **static**
 
-Strikes a lightning at given location. The only argument is the location.
+Schlägt an einem bestimmten Ort einen Blitz ein. Einziges Argument ist der Standort.
 
 !!! example
     ```YAML
@@ -317,12 +350,12 @@ Strikes a lightning at given location. The only argument is the location.
 
 ## Notification: `notify`
 
-Displays a notification using the NotifyIO system.
+Zeigt eine Benachrichtigung mit dem NotifyIO-System an.
 
 !!! warning
-    All colons (`:`) in the message part of the notification need to be escaped, including those inside variables.
-    One backslash (`\`) is required when using no quoting at all (`...`) or single quotes
-    (`'...'`). Two backslashes are required (`\\`) when using double quotes (`"..."`).
+    Alle Doppelpunkte (`:`) im Nachrichtenteil der Benachrichtigung müssen maskiert werden, einschließlich der Variablen.
+    Ein Backslash (`\`) ist erforderlich, wenn überhaupt keine Anführungszeichen (`...`) verwendet werden oder einfache Anführungszeichen (`...`).
+    Zwei Backslash sind erforderlich (`\\`) bei Verwendung von doppelten Anführungszeichen (`"..."`).
 
     Examples:<br>
     `eventName: notify Peter:Heya %player%!` :arrow_right: `eventName: notify Peter{++\++}:Heya %player%!`<br>
@@ -330,61 +363,61 @@ Displays a notification using the NotifyIO system.
     `eventName: {=="==}notify Peter:Heya %player%!{=="==}` :arrow_right: `eventName: {=="==}notify Peter{++\\++}:Heya %player%!{=="==}`<br>
     `otherEvent: notify You own %math.calc:5% fish!` :arrow_right: `otherEvent: You own %math.calc{++\++}:5% fish!`
 
-| Option                                                             | Description                                                                                                                                     |
-|--------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| message  	                                                         | The message that will be displayed. Supports variables and translations. *Required, must be first*             	                                                                     |
-| category 	                                                         | Will load all settings from that Notification Category. Can be a comma-seperated list. The first existent category will be used. *Optional*                  |   
-| io       	                                                         | Any [NotifyIO](Notification-IO's-&-Categories.md). Overrides the "category" settings. *Optional*                                                                                     |
-| [NotifyIO](Notification-IO's-&-Categories.md#notify-ios) 	         | Any setting from the defined notifyIO. Can be used multiple times. Overrides the "category" settings. *Optional*                                                                     |
+| Option                                                             | Beschreibung                                                                                                                                                           |
+|--------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| message  	                                                         | Die Nachricht, die angezeigt wird. Unterstützt Variablen und Übersetzungen. *Erforderlich, muss zuerst sein*            	                                             |
+| category 	                                                         | Lädt alle Einstellungen aus dieser Benachrichtigungskategorie. Kann eine durch Kommas getrennte Liste sein. Die erste vorhandene Kategorie wird verwendet. *Optional* |   
+| io       	                                                         | irgendeine [NotifyIO](Notification-IO's-&-Categories.md). Überschreibt die „Kategorie“-Einstellungen. *Optional*                                                              |
+| [NotifyIO](Notification-IO's-&-Categories.md#notify-ios) 	         | Jede Einstellung aus dem definierten NotifyIO. Kann mehrfach verwendet werden. Überschreibt die „Kategorie“-Einstellungen. *Optional*                                                    |
 
-The fallback NotifyIO is `chat` if no argument other than `message` is specified.    
-`message` is the only argument of this event that is not `key:value` based. You can freely add any text with spaces there.
+Die Standard NotifyIO ist `chat`, wenn kein anderes Argument als `message` angegeben ist. 
+`message` ist das einzige Argument dieses Event, das nicht `Schlüssel:Wert` basierent ist. Du kannst dort beliebigen Text mit Leerzeichen hinzufügen.
 
-It also allows you to provide multiple translations using a special syntax: 
+Es ermöglicht dir auch, mehrere Übersetzungen mit einer speziellen Syntax bereitzustellen:
 ```YAML
 example: "notify {en} ABC {de} DEF"
 ```
-The value in `{}` is a language key from messages.yml. Any text after the language key until the next language key
-belongs to the specified language. There must be a space between the language key and the message.
-In this example, english users would see `ABC` and german ones would see `DEF`.
+Der Wert in `{}` ist der Sprach-Kürzel definiert in der messages.yml. Jeder Text zwischen den Sprach-Kürzeln gehört zur Sprache des vorherigen Sprach-kürzel. 
+Zwischen dem Sprach-kürzel und der Nachricht muss ein Leerzeichen stehen.
+In diesem Beispiel würden englische Benutzer `ABC` und deutsche `DEF` sehen.
 
-<h3>Examples:</h3>
+<h3>Beispiele:</h3>
 
-Check out the documentation about [Notify Categories](Notification-IO's-&-Categories.md#categories) and 
-[Notify IO options](Notification-IO's-&-Categories.md#notify-ios) if you haven't yet. You must understand these two if
-you want to use the Notify system to it's full extend.
+Sehe dir die Dokumentation zu [Notify Categories](Notification-IO's-&-Categories.md#categories) und 
+[Notify IO options](Notification-IO's-&-Categories.md#notify-ios) an.
+Du musst beides verstehen, wenn du das Notify-System in vollem Umfang nutzen möchtest.
 ```YAML
-#The simplest of all notify events. Just a chat message:
-customEvent: "notify Hello %player%!"  
+#Das einfachste aller Notify-Event nur eine Chat-Nachricht:
+customEvent: "notify Hallo %player%!"  
 
-#It's the same as this one since 'chat' is the default IO.
-theSame: "notify Hello %player%! io:chat"
+#Es ist dasselbe wie oben, da `chat` die Standard-IO ist.
+theSame: "notify Hallo %player%! io:chat"
 
-#This one displays a title and a subtile:
-myTitle: "notify This is a title.\nThis is a subtitle. io:title"
+#Dieser zeigt einen Titel und einen Untertitel an:
+myTitle: "notify Dies ist ein Titel.\nDies ist ein Untertitel. io:title"
 
-#Plays a sound:
+#Spielt eine sound:
 mySound: "notify io:sound sound:x.y.z"
 
-#This one explicitly defines an io (bossbar) and adds one bossbarIO option + one soundIO option:
-myBar: "notify This is a custom message. io:bossbar barColor:red sound:block.anvil.use"
+#Dieses Event nutzt die Bossbar NachrichtIO mit der Option der Balkenfarbe und einen sound:
+myBar: "notify Dies ist eine benutzerdefinierte Nachricht. io:bossbar barColor:red sound:block.anvil.use"
 
-#Some events with categories.
-myEvent1: "notify This is a custom message! category:info"
-myEvent2: "notify This is a custom message! category:firstChoice,secondChoice"
+#Einige Events mit Kategorien.
+myEvent1: "notify Dies ist eine benutzerdefinierte Nachricht! category:info"
+myEvent2: "notify Dies ist eine benutzerdefinierte Nachricht! category:firstChoice,secondChoice"
 
-#You can also override category settings:
-myEvent3: "notify Another message! category:info io:advancement frame:challenge"
+#Du kannst auch Kategorieeinstellungen überschreiben:
+myEvent3: "notify Eine andere Nachricht! category:info io:advancement frame:challenge"
 
-#Use multiple languages:
-multilanguage: "notify {en} Hello english person! {de} Hello german person! {es} Hello spanish person!"
+#Nutze mehrere Sprachen:
+mehrereSprachen: "notify {en} Hello english person! {de} Hallo deutsche Person! {es} Hola españoles!"
 ```
 
 
 
 ## Broadcast: `notifyall`
 
-This events works just like the [notify](#notification-notify) event but shows the notification for all online players.
+Dieses Event funktioniert genauso wie [notify](#notification-notify) Event, zeigt aber die Benachrichtigung für alle Online-Spieler an.
 
 ## Objective: `objective`
 
@@ -402,11 +435,11 @@ Using this in static contexts only works when removing objectives!
 
 ## OPsudo: `opsudo`
 
-This event is similar to the `sudo` event, the only difference is that it will fire a command as the player with temporary OP permissions. 
-Additional commands can be defined by separating them with `|` character. If you want to use a `|` character in the message use `\|`.
+Dieses Event ist ähnlich wie das `sudo` Event, der einzige Unterschied ist, dass es ein Befehl als Spieler mit temporäre OP-Berechtigungen ausführt.
+Zusätzliche Befehle können definiert werden, indem sie mit `|` getrennt werden. Wenn du ein `|`-Zeichen in der Nachricht verwenden möchtest, verwende `\|`.
 
-Looking for [run as normal player](#sudo-sudo)?
-Looking for [console commands](#command-command)?
+Suchst du nach [führe ein Befehl als normaler Spieler aus](#sudo-sudo)?
+Suchst du nach [führe Befehle von der Konsole aus](#command-command)?
 
 !!! example
     ```YAML
@@ -415,7 +448,7 @@ Looking for [console commands](#command-command)?
 
 ## Party event: `party`
 
-Runs the specified list of events (third argument) for every player in a party. More info about parties in "Party" chapter in **Reference** section.
+Führt die angegebene Liste von Events (drittes Argument) für jeden Spieler in einer Party aus. Weitere Informationen zu Partys finden Sie im Kapitel `party` im **Reference** Abschnitt.
 
 !!! example
     ```YAML
@@ -426,14 +459,14 @@ Runs the specified list of events (third argument) for every player in a party. 
 
 **persistent**, **static**
 
-Another container for events. It picks one (or multiple) of the given events and runs it.
-You must specify how likely it is that each event is picked by adding the percentage before the event's id. 
-The event won't break if your total percentages are above 100%. 
+Ein weiterer Container für Events. Es wählt ein (oder mehrere) der gegebenen Events und führt sie aus.
+Du musst angeben wie wahrscheinlich es ist das jeweilige Event zu bekommen, indem du einen Prozentwert vor der Event-ID setzt.
+Dieses Event funktionert auch mit einem Gesamtprozentwert über 100%. 
 
-It picks one event from the list by default, but you can add an optional `amount:` if you want more to be picked.
-Note that only as many events as specified can be picked and `amount:0` will do nothing.
+Es wählt Standardmäßig ein Event aus der Liste, aber du kannst das Argument `amount:` angeben, wenn du willst, dass mehrere ausgewählt werden.
+Beachte das nur so viele Events wie vorhanden ausgewählt werden können und `amount:0` macht nichts.
 
-There must be two `%%` before the event's name if variables are used, one is from the variable and the other one from the event's syntax.
+Es müssen zwei `%%` vor dem Event-Name stehen, wenn Variablen verwendet werden, eins ist von der Variable und das andere ist von der Event-Syntax.
 
 !!! example
     ```YAML
@@ -445,10 +478,10 @@ There must be two `%%` before the event's name if variables are used, one is fro
 
 **persistent**
 
-Gives the player a specified amount of points in a specified category. Amount can be negative if you want to subtract points.
-You can also use an asterisk to do multiplication (or division, if you use a fraction).
-First argument after the event name must be a category, and the second one - amount of points to give/take/multiply.
-This event also supports an optional `notify` argument that will display information about the change using the notification system.
+Gibt dem Spieler eine bestimmte Anzahl von Punkten in einer bestimmten Kategorie. Der Betrag kann negativ sein, wenn Sie Punkte abziehen möchten.
+Sie können auch ein Sternchen zum Multiplizieren verwenden (oder Division, wenn Sie einen Bruch verwenden).
+Das erste Argument nach dem Event-Namen muss eine Kategorie sein, und das zweite - die Anzahl der Punkte, die vergeben/genommen/multipliziert werden sollen.
+Dieses Event unterstützt auch ein optionales `notify` Argument, das Informationen über die Änderung mithilfe des Benachrichtigungssystems anzeigt.
 
 !!! example
     ```YAML
@@ -464,10 +497,10 @@ This event also supports an optional `notify` argument that will display informa
 
 **persistent**, **static**
 
-This event allows you to specify multiple instructions in one, long instruction. Each instruction must be started 
-with the `^` character (it divides all the instructions). It's not the same as the `folder` event, because you have to
-specify the actual instruction, not an event name. It is also fired on the same tick, not on the next one like in `folder`.
-Don't use conditions here, it behaves strangely. We will fix this in 2.0.
+Mit diesem Event kannst du mehrere Anweisungen in einer angeben. Jede Anweisungen muss mit einem `^`  Zeichen starten (es trennt alle Anweisungen).
+Es ist nicht dasselbe wie das `folder` Event, weil du die eigentliche Anweisung angeben musst, nicht nur den Event-Namen.
+Es wird auch beim selben Tick gefeuert, nicht beim nächsten wie bei `folder`.
+Verwenden Sie hier keine Bedingungen, es verhält sich seltsam. Wir werden dies in 2.0 beheben.
 
 !!! example
     ```YAML
@@ -476,7 +509,9 @@ Don't use conditions here, it behaves strangely. We will fix this in 2.0.
 
 ## Scoreboard: `score`
 
-This event works in the same way as `point` event, the only difference is that is uses scoreboards instead of points. You can add, subtract, multiply and divide scores in objectives on the scoreboard. The first argument is the name of the objective, second one is a number. It can be positive for additon, negative for subtraction or prefixed with an asterisk for multiplication. Multiplying by fractions is the same as dividing.
+Dieses Event funktioniert genauso wie das `point`-Event, der einzige Unterschied besteht darin, dass es Scoreboards anstelle von Punkten verwendet. Sie können Punktzahlen in Zielen auf der Anzeigetafel addieren, subtrahieren, multiplizieren und dividieren.
+Das erste Argument ist der Name des Ziels, das zweite eine Zahl. Es kann positiv für die Addition, negativ für die Subtraktion oder mit einem vorangestellten Sternchen für die Multiplikation sein. Das Multiplizieren mit Brüchen ist dasselbe wie das Dividieren.
+
 
 !!! example
     ```YAML
@@ -487,9 +522,9 @@ This event works in the same way as `point` event, the only difference is that i
 
 **persistent**, **static**
 
-Changes the block at the given position.
-The first argument is a [Block Selector](../Reference/#block-selectors), the second a location.
-Very powerful if used to trigger redstone contraptions.
+Ändert den Block an der angegebenen Position.
+Das erste Argument ist ein [Block](../Reference/#block-selectors), das zweite ein Ort.
+Sehr mächtig, wenn es zum Auslösen von Redstone-Apparaten verwendet wird.
 
 !!! example
     ```YAML
@@ -500,9 +535,13 @@ Very powerful if used to trigger redstone contraptions.
 
 **persistent**, **static**
 
-Spawns specified amount of mobs of given type at the location. First argument is a location. Next is [type of the mob](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html). The last, third argument is integer for amount of mobs to be spawned. You can also specify `name:` argument, followed by the name of the mob. All `_` characters will be replaced with spaces. You can also mark the spawned mob with a keyword using `marked:` argument. It won't show anywhere, and you can check for only marked mobs in `mobkill` objective.
+Spawnt eine bestimmte Anzahl von Mobs eines bestimmten Typs am Ort. Das erste Argument ist ein Standort.
+Das nächste ist [die Art des Mobs](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html). Das letzte, dritte Argument ist eine Ganzzahl für die Menge der zu spawnenden Mobs.
+Sie können auch das Argument `name:` angeben, gefolgt vom Namen des Mobs. Alle `_` Zeichen werden mit Leerzeichen ersetzt. Sie können den gespawnten Mob auch mit einem Schlüsselwort markieren, indem Sie das Argument `marked:` verwenden.
+Es wird nirgendwo angezeigt, und Sie können im Ziel `mobkill` nun nach markierten Mobs suchen.
 
-You can specify armor which the mob will wear and items it will hold with `h:` (helmet), `c:` (chestplate), `l:` (leggings), `b:` (boots), `m:` (main hand) and `o:` (off hand) optional arguments. These take a single item without amount, as defined in the _items_ section. You can also add a list of drops with `drops:` argument, followed by a list of items with amounts after colons, separated by commas.
+Sie können die Rüstung angeben, die der Mob tragen wird, und die Gegenstände, mit denen er ausgestattet ist `h:` (Helm), `c:` (Brustpanzer), `l:` (Hose), `b:` (Schuhe), `m:` (Haupt Hand) and `o:` (Neben Hand) optionale Argumente. 
+Dies nimmt ein Gegenstand ohne die Anzahl, so wie in dem _items_ Abschnitt definiert. Du kannst auch eine Liste von fallen gelassenen Gegenständen mit dem Argument `drops:` definieren, gefolgt von einer Liste mit Gegenständen mit Anzahl nach Doppelpunkt, geteilt durch Komma.
 
 !!! example
     ```YAML
@@ -516,11 +555,11 @@ You can specify armor which the mob will wear and items it will hold with `h:` (
 
 ## Sudo: `sudo`
 
-This event is similar to `command` event, the only difference is that it will fire a command as the player (often referred to as player commands).
-Additional commands can be defined by separating them with `|` character. If you want to use a `|` character in the message use `\|`.
+Dieses Event ist ähnlich wie das `command` Event, der einzige Unterschied ist, dass es einen Befehl als Spieler auslöst (oft als Spielerbefehle bezeichnet).
+Zusätzliche Befehle können definiert werden, indem sie mit  `|` getrennt werden. Wenn du das Zeichen `|` in einen Befehl nutzen willst nutze `\|`.
 
-Looking for [run as op](#opsudo-opsudo)?
-Looking for [console commands](#command-command)?
+Suchst du nach [führe einen Befehl als OP aus](#opsudo-opsudo)?
+Suchst du nach [Konsolen Befehl](#command-command)?
 
 !!! example
     ```YAML
@@ -531,8 +570,8 @@ Looking for [console commands](#command-command)?
 
 **persistent**, **static**
 
-This event adds (or removes) a tag to the player. The first argument after event's name must be `add` or `del`.
-Next goes the tag name. It can't contain spaces (though `_` is fine). Additional tags can be added, separated by commas (without spaces).
+Dieses Event fügt dem Spieler ein Tag hinzu (oder entfernt es). Das erste Argument nach dem Namen des Events muss `add` oder `del` sein.
+Als nächstes kommt der Tag-Name. Es darf keine Leerzeichen enthalten ( `_` jedoch ist okay). Zusätzliche Tags können durch Kommas getrennt (ohne Leerzeichen) hinzugefügt werden.
 
 !!! example
     ```YAML
@@ -541,16 +580,17 @@ Next goes the tag name. It can't contain spaces (though `_` is fine). Additional
 
 ## Take Items: `take`
 
-Removes items from the player’s inventory, armor slots or backpack.
-The items itself must be defined in the `items` section, optionally with an amount after a colon.
-Which inventory types are checked is defined by the `invOrder:`
-option. You can use `Backpack`, `Inventory`, `Offhand` and `Armor` there. One after another will be checked if multiple types are defined.
+Entfernt Gegenstände aus dem Inventar, den Rüstungsfächern oder dem Rucksack des Spielers.
+Die Gegenstände selbst müssen im Abschnitt `items` definiert werden, optional mit Anzahl nach einem Doppelpunkt.
+Welche Inventar typen geprüft werden, wird durch `invOrder:` definiert.
+Du kannst `Backpack`, `Inventory`, `Offhand` und `Armor` hier verwenden. Sind mehrere Typen definiert, wird nacheinander geprüft.
 
-Note: If the items aren't quest items don't use `take`event with player options in conversations!
-The player can drop items before selecting the option and pickup them after the event fires.
-Validate it on the NPC’s reaction!
+!!! danger
+    Hinweis: Wenn es sich bei den Items nicht um Quest-Items handelt, verwenden Sie in Gesprächen kein `take`-Event mit Spieleroptionen!
+    Der Spieler kann Gegenstände fallen lassen, bevor er die Option auswählt, und sie nach dem Auslösen des Events aufheben.
+    Bestätigen Sie es anhand der Reaktion des NPCs!
 
-You can also specify `notify` keyword to display a simple message to the player about loosing items.
+Du kannst auch das Schlüsselwort `notify` angeben, um dem Spieler eine einfache Nachricht über den Verlust von Gegenständen anzuzeigen.
 
 !!! example
     ```YAML
@@ -563,9 +603,9 @@ You can also specify `notify` keyword to display a simple message to the player 
 
 ## Time: `time`
 
-Sets or adds time. The only argument is time to be set (integer) or time to be added (integer prefixed with +),
-in 24 hours format. Subtracting time is done by adding more time (if you think of this, it actually makes sense).
-Minutes can be achieved with floating point.
+Stellt die Zeit ein oder fügt sie hinzu. Das einzige Argument ist die festzulegende Zeit (Ganzzahl) oder die hinzuzufügende Zeit (Ganzzahl mit vorangestelltem +),
+in 24 Stunden Format. Das Subtrahieren von Zeit erfolgt durch Hinzufügen von mehr Zeit (wenn Sie daran denken, macht es tatsächlich Sinn).
+Minuten können mit Fließkomma erreicht werden.
 
 !!! example
     ```YAML
@@ -574,8 +614,8 @@ Minutes can be achieved with floating point.
 
 ## Teleport: `teleport`
 
-Teleports the player to a specified location, with or without head rotation. It will also end the conversation,
-if the player has one active.The first and only argument must be location. It's a good idea to use yaw and pitch here.
+Teleportiert den Spieler an einen bestimmten Ort, mit oder ohne Kopfdrehung. Es wird auch das Gespräch beenden,
+wenn der Spieler eins aktiv hat. Das erste und einzige Argument muss der Ort sein. Es ist eine gute Idee hier yaw und pitch zu verwenden.
 
 !!! example
     ```YAML
@@ -584,11 +624,11 @@ if the player has one active.The first and only argument must be location. It's 
 
 ## Variable: `variable`
 
-This event has only one purpose: Change values that are stored in `variable` objective variables. The first argument is
-the ID of the `variable` objective. The second argument is the name of the variable to set. The third argument is the
-value to set. Both the name and value can use `%...%` variables. To delete a variable you can use `""`. Refer to the
-[`variable` objective](Objectives-List.md#variable-variable) documentation for more information about
-storing variables. This event will do nothing if the player does not already have a `variable` objective assigned to them.
+Dieses Event hat nur einen Zweck: Werte ändern, die in `variable` Ziele gespeichert sind. Das erste Argument ist
+die ID des `variable` Ziels. Das zweite Argument ist der Name der zu setzenden Variablen.
+Das dritte Argument ist die Wert zum einzustellen. Sowohl der Name als auch der Wert können `%...%`-Variablen verwenden. Um eine Variable zu löschen, können Sie `""` verwenden.
+Sieh dir die [`variable` objective](Objectives-List.md#variable-variable) Dokumentation für weitere Informationen zum Speichern von Variablen an.
+Dieses Event hat keine Auswirkung, wenn dem Spieler nicht bereits ein `variable` Ziel zugewiesen wurde.
 
 !!! example
     ```YAML
@@ -599,7 +639,7 @@ storing variables. This event will do nothing if the player does not already hav
 
 ## Weather: `weather`
 
-Sets weather. The argument is `sun`, `rain` or `storm`.
+Stellt das Wetter ein. Das Argument ist `sun`, `rain` oder `storm`.
 
 !!! example
     ```YAML
@@ -608,7 +648,7 @@ Sets weather. The argument is `sun`, `rain` or `storm`.
     
 ## Give experience: `experience`
 
-Gives the specified amount of experience points to the player. You can give whole levels by adding the `level` argument.
+Gibt dem Spieler die angegebene Menge an Erfahrungspunkten. Du kannst auch ganze Level geben, idem du das Argument `level` hinzufügst.
 
 !!! example
     ```YAML
