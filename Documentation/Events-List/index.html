@@ -987,56 +987,70 @@
 <h2 id="cancel-quest-cancel">Cancel quest: <code>cancel</code></h2>
 <p>This event works in the same way as a <a href="Reference.md#canceling-quests">quest canceler in the backpack</a>.
 Running it is equal to the player clicking on the bone. The only argument is a name of a quest canceler, as defined in the <em>cancel</em> section</p>
-<p>!!! example
-    <code>YAML
-    cancel wood</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="l l-Scalar l-Scalar-Plain">cancel wood</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="chat-player-message-chat">Chat player message <code>chat</code></h2>
 <p>This event will send the given message as the player. Therefore, it will look like as if the player did send the message. 
 The instruction string is the command, without leading slash. You can only use <code>%player%</code> as a variable in this event.
 Additional messages can be defined by separating them with <code>|</code> character. If you want to use a <code>|</code> character in the message use <code>\|</code>.</p>
 <p>If a plugin does not work with the sudo / command event you need to use this event.</p>
-<p>!!! example
-    <code>YAML
-    sendMSG: "chat Hello!"
-    sendMultipleMSGs: "chat Hi %player%|ban %player%|pardon %player%"
-    sendPluginCommand: "chat /someCommand x y z"</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">sendMSG</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chat</span><span class="nv"> </span><span class="s">Hello!&quot;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">sendMultipleMSGs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chat</span><span class="nv"> </span><span class="s">Hi</span><span class="nv"> </span><span class="s">%player%|ban</span><span class="nv"> </span><span class="s">%player%|pardon</span><span class="nv"> </span><span class="s">%player%&quot;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">sendPluginCommand</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chat</span><span class="nv"> </span><span class="s">/someCommand</span><span class="nv"> </span><span class="s">x</span><span class="nv"> </span><span class="s">y</span><span class="nv"> </span><span class="s">z&quot;</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="chest-clear-chestclear">Chest Clear: <code>chestclear</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>This event removes all items from a chest at specified location. The only argument is a location.</p>
-<p>!!! example
-    <code>YAML
-    chestclear 100;200;300;world</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="l l-Scalar l-Scalar-Plain">chestclear 100;200;300;world</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="chest-give-chestgive">Chest Give: <code>chestgive</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>This works the same as <code>give</code> event, but it puts the items in a chest at specified location. The first argument is a location, the second argument is a list of items, like in <code>give</code> event. If the chest is full, the items will be dropped on the ground. The chest can be any other block with inventory, i.e. a hopper or a dispenser. BetonQuest will log an error to the console when this event is fired but there is no chest at specified location.</p>
-<p>!!! example
-    <code>YAML
-    chestgive 100;200;300;world emerald:5,sword</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="l l-Scalar l-Scalar-Plain">chestgive 100;200;300;world emerald:5,sword</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="chest-take-chesttake">Chest Take: <code>chesttake</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>This event works the same as <code>take</code> event, but it takes items from a chest at specified location. The instruction string is defined in the same way as in <code>chestgive</code> event.</p>
-<p>!!! example
-    <code>YAML
-    chesttake 100;200;300;world emerald:5,sword</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="l l-Scalar l-Scalar-Plain">chesttake 100;200;300;world emerald:5,sword</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="clear-entities-clear">Clear entities: <code>clear</code></h2>
 <p>This event removes all specified mobs from the specified area. The first required argument is a list of mobs (taken from <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html">here</a>) separated by commas. Next is location. After that there is the radius around the location (a positive number or a variable). You can also optionally specify <code>name:</code> argument, followed by name which removed mobs must have. You can use <code>marked:</code> argument to remove only mobs marked in <code>spawn</code> event.</p>
-<p>!!! example
-    <code>YAML
-    clear ZOMBIE,CREEPER 100;200;300;world 10 name:Monster</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="l l-Scalar l-Scalar-Plain">clear ZOMBIE,CREEPER 100;200;300;world 10 name:Monster</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="compass-compass">Compass: <code>compass</code></h2>
 <p>When you run this event, you can add or remove a compass destination for the player. You may also directly set the player's compass destination as well. When a destination is added the player will be able to select a specified location as a target of his compass. To select the target the player must open his backpack and click on the compass icon. The first argument is <code>add</code>,<code>del</code> or <code>set</code>, and second one is the name of the target, as defined in the <em>compass</em> section. Note that if you set a target the player will not automatically have it added to their choices.</p>
 <p>The destination must be defined in <code>compass</code> section. You can specify a name for the target in each language or just give a general name, and optionally add a custom item (from <em>items</em> section) to be displayed in the backpack. Example of a compass target:</p>
-<pre><code class="language-YAML">compass:
-  beton:
-    name:
-      en: Target
-      pl: Cel
-    location: 100;200;300;world
-    item: scroll
-</code></pre>
-<p>!!! example
-    <code>YAML
-    compass add beton</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">compass</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">beton</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="nt">en</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Target</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="nt">pl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cel</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100;200;300;world</span><span class="w"></span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scroll</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="l l-Scalar l-Scalar-Plain">compass add beton</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="command-command">Command: <code>command</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>Runs specified command from the console. The instruction string is the command, without leading slash.
@@ -1044,47 +1058,63 @@ You can use variables here, but variables other than <code>%player%</code> won't
 and the player is offline now. You can define additional commands by separating them with <code>|</code> character.
 If you want to use a <code>|</code> character in the command use <code>\|</code>.</p>
 <p>Looking for <a href="#sudo-sudo">run command as player</a>?</p>
-<p>!!! example
-    <code>YAML
-    command kill %player%|ban %player%</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="l l-Scalar l-Scalar-Plain">command kill %player%|ban %player%</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="conversation-conversation">Conversation: <code>conversation</code></h2>
 <p>Starts a conversation at location of the player. The only argument is ID of the conversation. This bypasses the conversation permission!</p>
-<p>!!! example
-    <code>YAML
-    conversation village_smith</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="l l-Scalar l-Scalar-Plain">conversation village_smith</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="damage-player-damage">Damage player: <code>damage</code></h2>
 <p>Damages the player by specified amount of damage. The only argument is a number (can have floating point).</p>
-<p>!!! example
-    <code>YAML
-    damage 20</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="l l-Scalar l-Scalar-Plain">damage 20</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="delete-point-deletepoint">Delete Point: <code>deletepoint</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>Delete the player points in a specified category.</p>
-<p>!!! example
-    <code>YAML
-    deletepoint npc_attitude</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="l l-Scalar l-Scalar-Plain">deletepoint npc_attitude</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="door-door">Door: <code>door</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>This event can open and close doors, trapdoors and fence gates. The syntax is exactly the same as in <code>lever</code> event above.</p>
-<p>!!! example
-    <code>YAML
-    door 100;200;300;world off</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="l l-Scalar l-Scalar-Plain">door 100;200;300;world off</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="remove-potion-effect-deleffect">Remove Potion Effect: <code>deleffect</code></h2>
 <p>Removes the specified potion effects from the player. Use <code>any</code> instead of a list of types to remove all potion effects from the player.</p>
-<p>!!! example
-    <code>YAML
-    deleffect ABSORPTION,BLINDNESS</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="l l-Scalar l-Scalar-Plain">deleffect ABSORPTION,BLINDNESS</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="potion-effect-effect">Potion Effect: <code>effect</code></h2>
 <p>Adds a specified potion effect to player. First argument is potion type. You can find all available types <a href="https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html">here</a>. Second is integer defining how long the effect will last in seconds. Third argument, also integer, defines level of the effect (1 means first level). Add a parameter <code>ambient</code> to make potion particles appear more invisible (just like beacon effects). To hide particles add a parameter <code>hidden</code>. To hide the icon for the effect add <code>noicon</code>.</p>
-<p>!!! example
-    <code>YAML
-    effect BLINDNESS 30 1 ambient icon</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="l l-Scalar l-Scalar-Plain">effect BLINDNESS 30 1 ambient icon</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="explosion-explosion">Explosion: <code>explosion</code></h2>
 <p><strong>static</strong></p>
 <p>Creates an explosion. It can make fire and destroy blocks. You can also define power, so be careful not to blow your server away. Default TNT power is 4, while Wither on creation is 7. First argument can be 0 or 1 and states if explosion will generate fire (like Ghast’s fireball). Second is also 0 or 1 but this defines if block will be destroyed or not. Third argument is the power (float number). At the end (4th attribute) there is location.</p>
-<p>!!! example
-    <code>YAML
-    explosion 0 1 4 100;64;-100;survival</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="l l-Scalar l-Scalar-Plain">explosion 0 1 4 100;64;-100;survival</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="folder-folder">Folder: <code>folder</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>It's something like a container for multiple events. You can use it to clarify your code.
@@ -1096,36 +1126,48 @@ The only required argument is a list of events separated by commas.</p>
 <p>There are also three optional arguments: <code>delay:</code>, <code>period:</code> and <code>random:</code>.
 Delay and Period is a number of seconds. Delay is the time before execution and period is the time between each event. It's optional and leaving it blank is the same as <code>delay:0</code> or <code>period:0</code>.
 Random is the amount of events, that will be randomly chosen to fire. It's optional and leaving it blank or omit it will fire all events.</p>
-<p>!!! example
-    <code>YAML
-    folder event1,event2,event3 delay:5 period:5 random:1</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="l l-Scalar l-Scalar-Plain">folder event1,event2,event3 delay:5 period:5 random:1</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="give-items-give">Give Items: <code>give</code></h2>
 <p>Gives the player predefined items. They are specified exactly as in <code>item</code> condition - list separated by commas, every item can have amount separated by colon. Default amount is 1. If the player doesn't have required space in the inventory, the items are dropped on the ground, unless they are quest items. Then they will be put into the backpack. You can also specify <code>notify</code> keyword to display a simple message to the player about receiving items.</p>
-<p>!!! example
-    <code>YAML
-    give emerald:5,emerald_block:9</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="l l-Scalar l-Scalar-Plain">give emerald:5,emerald_block:9</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="give-journal-givejournal">Give journal: <code>givejournal</code></h2>
 <p>This event simply gives the player his journal. It acts the same way as <strong>/j</strong> command would.</p>
-<p>!!! example
-    <code>YAML
-    givejournal</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="l l-Scalar l-Scalar-Plain">givejournal</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="global-point-globalpoint">Global point: <code>globalpoint</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>This works the same way as the normal point event but instead to manipulating the points for a category of a specific player it manipulates points in a global category. These global categories are player independent, so you could for example add a point to such a global category every time a player does a quest and give some special rewards for the 100th player who does the quest.</p>
-<p>!!! example
-    <code>YAML
-    globalpoint global_knownusers 1</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="l l-Scalar l-Scalar-Plain">globalpoint global_knownusers 1</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="global-tag-globaltag">Global tag: <code>globaltag</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>Works the same way as a normal tag event, but instead of setting a tag for one player it sets it globaly for all players.</p>
-<p>!!! example
-    <code>YAML
-    globaltag add global_areNPCsAgressive</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="l l-Scalar l-Scalar-Plain">globaltag add global_areNPCsAgressive</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="if-else-if">If else: <code>if</code></h2>
 <p>This event will check a condition, and based on the outcome it will run the first or second event. The instruction string is <code>if condition event1 else event2</code>, where <code>condition</code> is a condition ID and <code>event1</code> and <code>event2</code> are event IDs. <code>else</code> keyword is mandatory between events for no practical reason.</p>
-<p>!!! example
-    <code>YAML
-    if sun rain else sun</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="l l-Scalar l-Scalar-Plain">if sun rain else sun</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="journal-journal">Journal: <code>journal</code></h2>
 <p><strong>static</strong></p>
 <p>Adds or deletes an entry to/from a player's journal. Journal entries have to be defined in the <code>journal</code> section. The
@@ -1135,11 +1177,13 @@ will also reload the journal.</p>
 - <code>add</code>: Adds a page to the journal.
 - <code>delete</code>: Deletes a page from the journal.
 - <code>update</code>: Refreshes the journal. This is especially useful when you need to update the main page.</p>
-<p>!!! example
-    <code>YAML
-    journal add quest_started
-    journal delete quest_available
-    journal update</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="l l-Scalar l-Scalar-Plain">journal add quest_started</span><span class="w"></span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="l l-Scalar l-Scalar-Plain">journal delete quest_available</span><span class="w"></span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="l l-Scalar l-Scalar-Plain">journal update</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="kill-kill">Kill: <code>kill</code></h2>
 <p>Kills the player. Nothing else.</p>
 <h2 id="kill-mobs-killmob">Kill Mobs: <code>killmob</code></h2>
@@ -1151,38 +1195,47 @@ You can also specify <code>name:</code> argument, followed by the name of the mo
 be replaced with spaces. If you want to kill only mobs that have been marked using the spawn mob event use <code>marked:</code>
 argument followed by the keyword.</p>
 <p>Only mobs that are in loaded chunks can be killed by using this event.</p>
-<p>!!! example
-    <code>YAML
-    killmob ZOMBIE 100;200;300;world 40 name:Bolec</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="l l-Scalar l-Scalar-Plain">killmob ZOMBIE 100;200;300;world 40 name:Bolec</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="language-event-language">Language Event: <code>language</code></h2>
 <p>This event changes player's language to the specified one. There is only one argument, the language name.</p>
-<p>!!! example
-    <code>YAML
-    language en</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="l l-Scalar l-Scalar-Plain">language en</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="lever-lever">Lever: <code>lever</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>This event can switch a lever. The first argument is a location and the second one is state: <code>on</code>, <code>off</code> or <code>toggle</code>.</p>
-<p>!!! example
-    <code>YAML
-    lever 100;200;300;world toggle</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="l l-Scalar l-Scalar-Plain">lever 100;200;300;world toggle</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="lightning-lightning">Lightning: <code>lightning</code></h2>
 <p><strong>static</strong></p>
 <p>Strikes a lightning at given location. The only argument is the location.</p>
-<p>!!! example
-    <code>YAML
-    lightning 100;64;-100;survival</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="l l-Scalar l-Scalar-Plain">lightning 100;64;-100;survival</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="notification-notify">Notification: <code>notify</code></h2>
 <p>Displays a notification using the NotifyIO system.</p>
-<p>!!! warning
-    All colons (<code>:</code>) in the message part of the notification need to be escaped, including those inside variables.
-    One backslash (<code>\</code>) is required when using no quoting at all (<code>...</code>) or single quotes
-    (<code>'...'</code>). Two backslashes are required (<code>\\</code>) when using double quotes (<code>"..."</code>).</p>
-<pre><code>Examples:&lt;br&gt;
-`eventName: notify Peter:Heya %player%!` :arrow_right: `eventName: notify Peter{++\++}:Heya %player%!`&lt;br&gt;
-`eventName: {=='==}notify Peter:Heya %player%!{=='==}` :arrow_right: `eventName: {=='==}notify Peter{++\++}:Heya %player%!{=='==}`&lt;br&gt;
-`eventName: {=="==}notify Peter:Heya %player%!{=="==}` :arrow_right: `eventName: {=="==}notify Peter{++\\++}:Heya %player%!{=="==}`&lt;br&gt;
-`otherEvent: notify You own %math.calc:5% fish!` :arrow_right: `otherEvent: You own %math.calc{++\++}:5% fish!`
-</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All colons (<code>:</code>) in the message part of the notification need to be escaped, including those inside variables.
+One backslash (<code>\</code>) is required when using no quoting at all (<code>...</code>) or single quotes
+(<code>'...'</code>). Two backslashes are required (<code>\\</code>) when using double quotes (<code>"..."</code>).</p>
+<p>Examples:<br>
+<code>eventName: notify Peter:Heya %player%!</code> :arrow_right: <code>eventName: notify Peter{++\++}:Heya %player%!</code><br>
+<code>eventName: {=='==}notify Peter:Heya %player%!{=='==}</code> :arrow_right: <code>eventName: {=='==}notify Peter{++\++}:Heya %player%!{=='==}</code><br>
+<code>eventName: {=="==}notify Peter:Heya %player%!{=="==}</code> :arrow_right: <code>eventName: {=="==}notify Peter{++\\++}:Heya %player%!{=="==}</code><br>
+<code>otherEvent: notify You own %math.calc:5% fish!</code> :arrow_right: <code>otherEvent: You own %math.calc{++\++}:5% fish!</code></p>
+</div>
 <table>
 <thead>
 <tr>
@@ -1211,42 +1264,42 @@ argument followed by the keyword.</p>
 </table>
 <p>The fallback NotifyIO is <code>chat</code> if no argument other than <code>message</code> is specified.  <br />
 <code>message</code> is the only argument of this event that is not <code>key:value</code> based. You can freely add any text with spaces there.</p>
-<p>It also allows you to provide multiple translations using a special syntax: </p>
-<pre><code class="language-YAML">example: &quot;notify {en} ABC {de} DEF&quot;
-</code></pre>
-<p>The value in <code>{}</code> is a language key from messages.yml. Any text after the language key until the next language key
+<p>It also allows you to provide multiple translations using a special syntax: 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">{en}</span><span class="nv"> </span><span class="s">ABC</span><span class="nv"> </span><span class="s">{de}</span><span class="nv"> </span><span class="s">DEF&quot;</span><span class="w"></span>
+</code></pre></div>
+The value in <code>{}</code> is a language key from messages.yml. Any text after the language key until the next language key
 belongs to the specified language. There must be a space between the language key and the message.
 In this example, english users would see <code>ABC</code> and german ones would see <code>DEF</code>.</p>
 <h3>Examples:</h3>
 
 <p>Check out the documentation about <a href="Notification-IO's-&amp;-Categories.md#categories">Notify Categories</a> and 
 <a href="Notification-IO's-&amp;-Categories.md#notify-ios">Notify IO options</a> if you haven't yet. You must understand these two if
-you want to use the Notify system to it's full extend.</p>
-<pre><code class="language-YAML">#The simplest of all notify events. Just a chat message:
-customEvent: &quot;notify Hello %player%!&quot;  
-
-#It's the same as this one since 'chat' is the default IO.
-theSame: &quot;notify Hello %player%! io:chat&quot;
-
-#This one displays a title and a subtile:
-myTitle: &quot;notify This is a title.\nThis is a subtitle. io:title&quot;
-
-#Plays a sound:
-mySound: &quot;notify io:sound sound:x.y.z&quot;
-
-#This one explicitly defines an io (bossbar) and adds one bossbarIO option + one soundIO option:
-myBar: &quot;notify This is a custom message. io:bossbar barColor:red sound:block.anvil.use&quot;
-
-#Some events with categories.
-myEvent1: &quot;notify This is a custom message! category:info&quot;
-myEvent2: &quot;notify This is a custom message! category:firstChoice,secondChoice&quot;
-
-#You can also override category settings:
-myEvent3: &quot;notify Another message! category:info io:advancement frame:challenge&quot;
-
-#Use multiple languages:
-multilanguage: &quot;notify {en} Hello english person! {de} Hello german person! {es} Hello spanish person!&quot;
-</code></pre>
+you want to use the Notify system to it's full extend.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1">#The simplest of all notify events. Just a chat message:</span><span class="w"></span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nt">customEvent</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">%player%!&quot;</span><span class="w">  </span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1">#It&#39;s the same as this one since &#39;chat&#39; is the default IO.</span><span class="w"></span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="nt">theSame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">%player%!</span><span class="nv"> </span><span class="s">io:chat&quot;</span><span class="w"></span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="c1">#This one displays a title and a subtile:</span><span class="w"></span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="nt">myTitle</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">title.\nThis</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">subtitle.</span><span class="nv"> </span><span class="s">io:title&quot;</span><span class="w"></span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="c1">#Plays a sound:</span><span class="w"></span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="nt">mySound</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">io:sound</span><span class="nv"> </span><span class="s">sound:x.y.z&quot;</span><span class="w"></span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="c1">#This one explicitly defines an io (bossbar) and adds one bossbarIO option + one soundIO option:</span><span class="w"></span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="nt">myBar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">custom</span><span class="nv"> </span><span class="s">message.</span><span class="nv"> </span><span class="s">io:bossbar</span><span class="nv"> </span><span class="s">barColor:red</span><span class="nv"> </span><span class="s">sound:block.anvil.use&quot;</span><span class="w"></span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="c1">#Some events with categories.</span><span class="w"></span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="nt">myEvent1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">custom</span><span class="nv"> </span><span class="s">message!</span><span class="nv"> </span><span class="s">category:info&quot;</span><span class="w"></span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="nt">myEvent2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">custom</span><span class="nv"> </span><span class="s">message!</span><span class="nv"> </span><span class="s">category:firstChoice,secondChoice&quot;</span><span class="w"></span>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a><span class="c1">#You can also override category settings:</span><span class="w"></span>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a><span class="nt">myEvent3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Another</span><span class="nv"> </span><span class="s">message!</span><span class="nv"> </span><span class="s">category:info</span><span class="nv"> </span><span class="s">io:advancement</span><span class="nv"> </span><span class="s">frame:challenge&quot;</span><span class="w"></span>
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a><span class="c1">#Use multiple languages:</span><span class="w"></span>
+<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a><span class="nt">multilanguage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">{en}</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">english</span><span class="nv"> </span><span class="s">person!</span><span class="nv"> </span><span class="s">{de}</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">german</span><span class="nv"> </span><span class="s">person!</span><span class="nv"> </span><span class="s">{es}</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">spanish</span><span class="nv"> </span><span class="s">person!&quot;</span><span class="w"></span>
+</code></pre></div></p>
 <h2 id="broadcast-notifyall">Broadcast: <code>notifyall</code></h2>
 <p>This events works just like the <a href="#notification-notify">notify</a> event but shows the notification for all online players.</p>
 <h2 id="objective-objective">Objective: <code>objective</code></h2>
@@ -1254,22 +1307,28 @@ multilanguage: &quot;notify {en} Hello english person! {de} Hello german person!
 <p>Manages the objectives. Syntax is <code>objective &lt;action&gt; name</code>, where <code>&lt;action&gt;</code> can be <em>start</em>/<em>add</em> (one of the two),
 <em>delete</em>/<em>remove</em> or <em>complete</em>/<em>finish</em>. Name is the name of the objective, as defined in the <em>objectives</em> section.</p>
 <p>Using this in static contexts only works when removing objectives!</p>
-<p>!!! example
-    <code>YAML
-    objective start wood</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="l l-Scalar l-Scalar-Plain">objective start wood</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="opsudo-opsudo">OPsudo: <code>opsudo</code></h2>
 <p>This event is similar to the <code>sudo</code> event, the only difference is that it will fire a command as the player with temporary OP permissions. 
 Additional commands can be defined by separating them with <code>|</code> character. If you want to use a <code>|</code> character in the message use <code>\|</code>.</p>
 <p>Looking for <a href="#sudo-sudo">run as normal player</a>?
 Looking for <a href="#command-command">console commands</a>?</p>
-<p>!!! example
-    <code>YAML
-    opsudo spawn</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="l l-Scalar l-Scalar-Plain">opsudo spawn</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="party-event-party">Party event: <code>party</code></h2>
 <p>Runs the specified list of events (third argument) for every player in a party. More info about parties in "Party" chapter in <strong>Reference</strong> section.</p>
-<p>!!! example
-    <code>YAML
-    party 10 has_tag1,!has_tag2 give_reward</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="l l-Scalar l-Scalar-Plain">party 10 has_tag1,!has_tag2 give_reward</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="pick-random-pickrandom">Pick random: <code>pickrandom</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>Another container for events. It picks one (or multiple) of the given events and runs it.
@@ -1278,69 +1337,89 @@ The event won't break if your total percentages are above 100%. </p>
 <p>It picks one event from the list by default, but you can add an optional <code>amount:</code> if you want more to be picked.
 Note that only as many events as specified can be picked and <code>amount:0</code> will do nothing.</p>
 <p>There must be two <code>%%</code> before the event's name if variables are used, one is from the variable and the other one from the event's syntax.</p>
-<p>!!! example
-    <code>YAML
-    pickrandom 20.5%event1,0.5%event2,79%event3 amount:2
-    pickrandom %point.factionXP.amount%%event1,0.5%event2,79%event3,1%event4 amount:3</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="l l-Scalar l-Scalar-Plain">pickrandom 20.5%event1,0.5%event2,79%event3 amount:2</span><span class="w"></span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="l l-Scalar l-Scalar-Plain">pickrandom %point.factionXP.amount%%event1,0.5%event2,79%event3,1%event4 amount:3</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="point-point">Point: <code>point</code></h2>
 <p><strong>persistent</strong></p>
 <p>Gives the player a specified amount of points in a specified category. Amount can be negative if you want to subtract points.
 You can also use an asterisk to do multiplication (or division, if you use a fraction).
 First argument after the event name must be a category, and the second one - amount of points to give/take/multiply.
 This event also supports an optional <code>notify</code> argument that will display information about the change using the notification system.</p>
-<p>!!! example
-    <code>YAML
-    point npc_attitude 10</code></p>
-<p>!!! example  <br />
-<code>YAML
-    point village_reputation *0.75</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="l l-Scalar l-Scalar-Plain">point npc_attitude 10</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="l l-Scalar l-Scalar-Plain">point village_reputation *0.75</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="run-events-run">Run events: <code>run</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>This event allows you to specify multiple instructions in one, long instruction. Each instruction must be started 
 with the <code>^</code> character (it divides all the instructions). It's not the same as the <code>folder</code> event, because you have to
 specify the actual instruction, not an event name. It is also fired on the same tick, not on the next one like in <code>folder</code>.
 Don't use conditions here, it behaves strangely. We will fix this in 2.0.</p>
-<p>!!! example
-    <code>YAML
-    run ^tag add beton ^give emerald:5 ^entry add beton ^kill</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="l l-Scalar l-Scalar-Plain">run ^tag add beton ^give emerald:5 ^entry add beton ^kill</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="scoreboard-score">Scoreboard: <code>score</code></h2>
 <p>This event works in the same way as <code>point</code> event, the only difference is that is uses scoreboards instead of points. You can add, subtract, multiply and divide scores in objectives on the scoreboard. The first argument is the name of the objective, second one is a number. It can be positive for additon, negative for subtraction or prefixed with an asterisk for multiplication. Multiplying by fractions is the same as dividing.</p>
-<p>!!! example
-    <code>YAML
-    score kills 1</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="l l-Scalar l-Scalar-Plain">score kills 1</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="set-block-setblock">Set Block: <code>setblock</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>Changes the block at the given position.
 The first argument is a <a href="../Reference/#block-selectors">Block Selector</a>, the second a location.
 Very powerful if used to trigger redstone contraptions.</p>
-<p>!!! example
-    <code>YAML
-    setblock REDSTONE_BLOCK 100;200;300;world</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="l l-Scalar l-Scalar-Plain">setblock REDSTONE_BLOCK 100;200;300;world</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="spawn-mob-spawn">Spawn Mob: <code>spawn</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>Spawns specified amount of mobs of given type at the location. First argument is a location. Next is <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html">type of the mob</a>. The last, third argument is integer for amount of mobs to be spawned. You can also specify <code>name:</code> argument, followed by the name of the mob. All <code>_</code> characters will be replaced with spaces. You can also mark the spawned mob with a keyword using <code>marked:</code> argument. It won't show anywhere, and you can check for only marked mobs in <code>mobkill</code> objective.</p>
 <p>You can specify armor which the mob will wear and items it will hold with <code>h:</code> (helmet), <code>c:</code> (chestplate), <code>l:</code> (leggings), <code>b:</code> (boots), <code>m:</code> (main hand) and <code>o:</code> (off hand) optional arguments. These take a single item without amount, as defined in the <em>items</em> section. You can also add a list of drops with <code>drops:</code> argument, followed by a list of items with amounts after colons, separated by commas.</p>
-<p>!!! example
-    <code>YAML
-    spawn 100;200;300;world SKELETON 5 marked:targets</code></p>
-<p>!!! example
-    <code>YAML
-    spawn 100;200;300;world ZOMBIE name:Bolec 1 h:blue_hat c:red_vest drops:emerald:10,bread:2</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="l l-Scalar l-Scalar-Plain">spawn 100;200;300;world SKELETON 5 marked:targets</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="l l-Scalar l-Scalar-Plain">spawn 100;200;300;world ZOMBIE name:Bolec 1 h:blue_hat c:red_vest drops:emerald:10,bread:2</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="sudo-sudo">Sudo: <code>sudo</code></h2>
 <p>This event is similar to <code>command</code> event, the only difference is that it will fire a command as the player (often referred to as player commands).
 Additional commands can be defined by separating them with <code>|</code> character. If you want to use a <code>|</code> character in the message use <code>\|</code>.</p>
 <p>Looking for <a href="#opsudo-opsudo">run as op</a>?
 Looking for <a href="#command-command">console commands</a>?</p>
-<p>!!! example
-    <code>YAML
-    sudo spawn</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="l l-Scalar l-Scalar-Plain">sudo spawn</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="tag-tag">Tag: <code>tag</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>This event adds (or removes) a tag to the player. The first argument after event's name must be <code>add</code> or <code>del</code>.
 Next goes the tag name. It can't contain spaces (though <code>_</code> is fine). Additional tags can be added, separated by commas (without spaces).</p>
-<p>!!! example
-    <code>YAML
-    tag add quest_started,new_entry</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="l l-Scalar l-Scalar-Plain">tag add quest_started,new_entry</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="take-items-take">Take Items: <code>take</code></h2>
 <p>Removes items from the player’s inventory, armor slots or backpack.
 The items itself must be defined in the <code>items</code> section, optionally with an amount after a colon.
@@ -1350,47 +1429,59 @@ option. You can use <code>Backpack</code>, <code>Inventory</code>, <code>Offhand
 The player can drop items before selecting the option and pickup them after the event fires.
 Validate it on the NPC’s reaction!</p>
 <p>You can also specify <code>notify</code> keyword to display a simple message to the player about loosing items.</p>
-<p>!!! example
-    <code>YAML
-    take emerald:120,sword
-    take nugget:6 notify
-    take wand notify invOrder:Backpack
-    take money:50 invOrder:Backpack,Inventory
-    take armor invOrder:Armor,Offhand,Inventory,Backpack</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="l l-Scalar l-Scalar-Plain">take emerald:120,sword</span><span class="w"></span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="l l-Scalar l-Scalar-Plain">take nugget:6 notify</span><span class="w"></span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="l l-Scalar l-Scalar-Plain">take wand notify invOrder:Backpack</span><span class="w"></span>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="l l-Scalar l-Scalar-Plain">take money:50 invOrder:Backpack,Inventory</span><span class="w"></span>
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="l l-Scalar l-Scalar-Plain">take armor invOrder:Armor,Offhand,Inventory,Backpack</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="time-time">Time: <code>time</code></h2>
 <p>Sets or adds time. The only argument is time to be set (integer) or time to be added (integer prefixed with +),
 in 24 hours format. Subtracting time is done by adding more time (if you think of this, it actually makes sense).
 Minutes can be achieved with floating point.</p>
-<p>!!! example
-    <code>YAML
-    time +6</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="l l-Scalar l-Scalar-Plain">time +6</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="teleport-teleport">Teleport: <code>teleport</code></h2>
 <p>Teleports the player to a specified location, with or without head rotation. It will also end the conversation,
 if the player has one active.The first and only argument must be location. It's a good idea to use yaw and pitch here.</p>
-<p>!!! example
-    <code>YAML
-    teleport 123;32;-789;world_the_nether;180;45</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="l l-Scalar l-Scalar-Plain">teleport 123;32;-789;world_the_nether;180;45</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="variable-variable">Variable: <code>variable</code></h2>
 <p>This event has only one purpose: Change values that are stored in <code>variable</code> objective variables. The first argument is
 the ID of the <code>variable</code> objective. The second argument is the name of the variable to set. The third argument is the
 value to set. Both the name and value can use <code>%...%</code> variables. To delete a variable you can use <code>""</code>. Refer to the
 <a href="Objectives-List.md#variable-variable"><code>variable</code> objective</a> documentation for more information about
 storing variables. This event will do nothing if the player does not already have a <code>variable</code> objective assigned to them.</p>
-<p>!!! example
-    <code>YAML
-    variable CustomVariable MyFirstVariable Goodbye!
-    variable variable_objectiveID name %player%
-    variable other_var_obj desc ""</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="l l-Scalar l-Scalar-Plain">variable CustomVariable MyFirstVariable Goodbye!</span><span class="w"></span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="l l-Scalar l-Scalar-Plain">variable variable_objectiveID name %player%</span><span class="w"></span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="l l-Scalar l-Scalar-Plain">variable other_var_obj desc &quot;&quot;</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="weather-weather">Weather: <code>weather</code></h2>
 <p>Sets weather. The argument is <code>sun</code>, <code>rain</code> or <code>storm</code>.</p>
-<p>!!! example
-    <code>YAML
-    weather rain</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="l l-Scalar l-Scalar-Plain">weather rain</span><span class="w"></span>
+</code></pre></div>
+</div>
 <h2 id="give-experience-experience">Give experience: <code>experience</code></h2>
 <p>Gives the specified amount of experience points to the player. You can give whole levels by adding the <code>level</code> argument.</p>
-<p>!!! example
-    <code>YAML
-    experience 4 level</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="l l-Scalar l-Scalar-Plain">experience 4 level</span><span class="w"></span>
+</code></pre></div>
+</div>
 
               
             </article>
@@ -1446,7 +1537,7 @@ storing variables. This event will do nothing if the player does not already hav
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.config.lang": "de", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Suche", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version.title": "Version ausw\u00e4hlen"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.config.lang": "de", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Suche", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version.title": "Version ausw\u00e4hlen"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c2e1ee47.min.js"></script>
