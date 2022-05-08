@@ -2,7 +2,7 @@ site_name: BetonQuest German
 theme:
   name: material
   palette:
-    scheme: default
+    scheme: slate
 
   # 404 page
   static_templates:
