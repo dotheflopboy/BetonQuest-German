@@ -1,7 +1,7 @@
 site_name: BetonQuest German
 theme:
-  name: null
-  custom_dir: mkdocs-material/material
+  name: material
+  custom_dir: overrides
 
   # 404 page
   static_templates:
@@ -12,10 +12,7 @@ theme:
   search_index_only: true
 
   # Default values, taken from mkdocs_theme.yml
-  language: en
+  language: de
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: assets/favicon.png
-  icon:
-    logo: logo
