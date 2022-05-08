@@ -985,28 +985,28 @@
 
 <h1 id="events-list">Events List</h1>
 <h2 id="cancel-quest-cancel">Cancel quest: <code>cancel</code></h2>
-<p>This event works in the same way as a <a href="Reference.md#canceling-quests">quest canceler in the backpack</a>.
-Running it is equal to the player clicking on the bone. The only argument is a name of a quest canceler, as defined in the <em>cancel</em> section</p>
+<p>Dieses Event funktioniert genauso wie ein <a href="Reference.md#canceling-quests">Quest-Abbrecher im Rucksack</a>.
+Das Ausführen ist gleichbedeutend damit, dass der Spieler auf den Knochen klickt. Das einzige Argument ist der Name eines Questabbrechers, wie im Abschnitt <em>cancel</em> definiert</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="l l-Scalar l-Scalar-Plain">cancel wood</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="chat-player-message-chat">Chat player message <code>chat</code></h2>
-<p>This event will send the given message as the player. Therefore, it will look like as if the player did send the message. 
-The instruction string is the command, without leading slash. You can only use <code>%player%</code> as a variable in this event.
-Additional messages can be defined by separating them with <code>|</code> character. If you want to use a <code>|</code> character in the message use <code>\|</code>.</p>
-<p>If a plugin does not work with the sudo / command event you need to use this event.</p>
+<p>Dieses Event sendet die angegebene Nachricht als Spieler. Daher sieht es so aus, als hätte der Spieler die Nachricht gesendet.
+Du kannst in diesem Event nur <code>%player%</code> als Variable verwenden.
+Zusätzliche Nachrichten können definiert werden, indem sie mit  <code>|</code>  getrennt werden. Wenn du <code>|</code> in der Nachricht werden willst nutze <code>\|</code>.</p>
+<p>Wenn ein Plugin nicht mit dem sudo / command-Event funktioniert, musst du dieses Event verwenden.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">sendMSG</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chat</span><span class="nv"> </span><span class="s">Hello!&quot;</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">sendMultipleMSGs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chat</span><span class="nv"> </span><span class="s">Hi</span><span class="nv"> </span><span class="s">%player%|ban</span><span class="nv"> </span><span class="s">%player%|pardon</span><span class="nv"> </span><span class="s">%player%&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">sendMSG</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chat</span><span class="nv"> </span><span class="s">Hallo!&quot;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">sendMultipleMSGs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chat</span><span class="nv"> </span><span class="s">Hey</span><span class="nv"> </span><span class="s">%player%|ban</span><span class="nv"> </span><span class="s">%player%|pardon</span><span class="nv"> </span><span class="s">%player%&quot;</span><span class="w"></span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">sendPluginCommand</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chat</span><span class="nv"> </span><span class="s">/someCommand</span><span class="nv"> </span><span class="s">x</span><span class="nv"> </span><span class="s">y</span><span class="nv"> </span><span class="s">z&quot;</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="chest-clear-chestclear">Chest Clear: <code>chestclear</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>This event removes all items from a chest at specified location. The only argument is a location.</p>
+<p>Dieses Event entfernt alle Gegenstände aus einer Truhe an einem bestimmten Ort. Das einzige Argument ist ein Standort.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="l l-Scalar l-Scalar-Plain">chestclear 100;200;300;world</span><span class="w"></span>
@@ -1014,7 +1014,11 @@ Additional messages can be defined by separating them with <code>|</code> charac
 </div>
 <h2 id="chest-give-chestgive">Chest Give: <code>chestgive</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>This works the same as <code>give</code> event, but it puts the items in a chest at specified location. The first argument is a location, the second argument is a list of items, like in <code>give</code> event. If the chest is full, the items will be dropped on the ground. The chest can be any other block with inventory, i.e. a hopper or a dispenser. BetonQuest will log an error to the console when this event is fired but there is no chest at specified location.</p>
+<p>Dies funktioniert genauso wie das <code>give</code> Event, aber es legt die Gegenstände in einer Truhe an einer bestimmten Stelle ab.
+Das erste Argument ist ein Ort, das zweite Argument ist eine Liste von Elementen, wie im <code>give</code> Event.
+Wenn die Truhe voll ist, werden die Gegenstände auf den Boden fallen gelassen.
+Die Truhe kann jeder andere Block mit Inventar sein, z. B. ein Trichter oder ein Spender.
+BetonQuest protokolliert einen Fehler in der Konsole, wenn dieses Ereignis ausgelöst wird, sich aber an der angegebenen Position keine Truhe befindet.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="l l-Scalar l-Scalar-Plain">chestgive 100;200;300;world emerald:5,sword</span><span class="w"></span>
@@ -1022,29 +1026,41 @@ Additional messages can be defined by separating them with <code>|</code> charac
 </div>
 <h2 id="chest-take-chesttake">Chest Take: <code>chesttake</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>This event works the same as <code>take</code> event, but it takes items from a chest at specified location. The instruction string is defined in the same way as in <code>chestgive</code> event.</p>
+<p>Dieses Event funktioniert genauso wie das <code>Take</code> Event, aber es nimmt Gegenstände aus einer Truhe an einem bestimmten Ort. 
+Es wird genau so definiert wie das <code>chestgive</code> Event.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="l l-Scalar l-Scalar-Plain">chesttake 100;200;300;world emerald:5,sword</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="clear-entities-clear">Clear entities: <code>clear</code></h2>
-<p>This event removes all specified mobs from the specified area. The first required argument is a list of mobs (taken from <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html">here</a>) separated by commas. Next is location. After that there is the radius around the location (a positive number or a variable). You can also optionally specify <code>name:</code> argument, followed by name which removed mobs must have. You can use <code>marked:</code> argument to remove only mobs marked in <code>spawn</code> event.</p>
+<p>Dieses Event entfernt alle angegebenen Mobs aus dem angegebenen Bereich.
+Das erste erforderliche Argument ist eine Liste von Mobs (ausgesucht von <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html">here</a>) durch Kommata abgetrennt.
+Als nächstes kommt der Standort.
+Danach folgt der Radius um den Standort (eine positive Zahl oder eine Variable). 
+Optional kannst du das Argument <code>name:</code> angeben, gefolgt vom Namen, den entfernte Mobs haben müssen.
+Du kannst das <code>marked:</code> Argument nutzen, um nur Mobs zu entfernen, die im <code>Spawn</code> Event markiert sind.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="l l-Scalar l-Scalar-Plain">clear ZOMBIE,CREEPER 100;200;300;world 10 name:Monster</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="compass-compass">Compass: <code>compass</code></h2>
-<p>When you run this event, you can add or remove a compass destination for the player. You may also directly set the player's compass destination as well. When a destination is added the player will be able to select a specified location as a target of his compass. To select the target the player must open his backpack and click on the compass icon. The first argument is <code>add</code>,<code>del</code> or <code>set</code>, and second one is the name of the target, as defined in the <em>compass</em> section. Note that if you set a target the player will not automatically have it added to their choices.</p>
-<p>The destination must be defined in <code>compass</code> section. You can specify a name for the target in each language or just give a general name, and optionally add a custom item (from <em>items</em> section) to be displayed in the backpack. Example of a compass target:</p>
+<p>Mit diesen Event kannst du ein Kompass-Ziel für den Spieler setzen oder löschen. You may also directly set the player's compass destination as well.
+Wenn ein Ziel hinzugefügt wird, kann der Spieler einen bestimmten Ort als Ziel seines Kompasses auswählen.
+Um das Ziel auszuwählen, muss der Spieler seinen Rucksack öffnen und auf das Kompasssymbol klicken.
+Das erste Argument ist <code>add</code>,<code>del</code> oder <code>set</code>, und der zweite ist der Name des Ziels, wie im Abschnitt <em>compass</em> definiert. 
+Beachte: Wenn du ein Ziel setzt, wird es nicht automatisch als Ziel-Wahl des Spielers gesetzt.</p>
+<p>Das Ziel muss im Abschnitt <code>compass</code> definiert sein. Du kannst für jede Sprache einen eigenen Ziel-Namen setzten oder einen allgemeinen Namen setzen, und optional ein eigenes item hinzufügen (aus dem <em>items</em> Abschnitt) welches im Rucksack angezeigt wird.
+Beispiel für ein Kompassziel:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">compass</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">beton</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"></span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="nt">en</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Target</span><span class="w"></span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="nt">pl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cel</span><span class="w"></span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100;200;300;world</span><span class="w"></span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scroll</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="nt">de</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ziel</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="nt">en</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Target</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">      </span><span class="nt">pl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cel</span><span class="w"></span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100;200;300;world</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scroll</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -1053,25 +1069,25 @@ Additional messages can be defined by separating them with <code>|</code> charac
 </div>
 <h2 id="command-command">Command: <code>command</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>Runs specified command from the console. The instruction string is the command, without leading slash.
-You can use variables here, but variables other than <code>%player%</code> won't resolve if the event is fired from delayed <code>folder</code>
-and the player is offline now. You can define additional commands by separating them with <code>|</code> character.
-If you want to use a <code>|</code> character in the command use <code>\|</code>.</p>
-<p>Looking for <a href="#sudo-sudo">run command as player</a>?</p>
+<p>Führt den angegebenen Befehl von der Konsole aus. Gebe den Befehl OHNE Schrägstrich an.
+Du kannst hier Variablen verwenden, aber andere Variablen als <code>%player%</code> werden nicht funktionieren, wenn das Event von einen verzögerten <code>folder</code> Event ausgelöst wird
+und der Spieler offline ist. Du kannst zusätzliche Befehle definieren, indem du sie mit dem Zeichen <code>|</code> trennst.
+Wenn du das Zeichen <code>|</code> in einen Befehl verwenden willst nutze <code>\|</code>.</p>
+<p>Suchst du nach <a href="#sudo-sudo">führe ein Befehl aus Spieler aus</a>?</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="l l-Scalar l-Scalar-Plain">command kill %player%|ban %player%</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="conversation-conversation">Conversation: <code>conversation</code></h2>
-<p>Starts a conversation at location of the player. The only argument is ID of the conversation. This bypasses the conversation permission!</p>
+<p>Startet ein Gespräch am Standort des Spielers. Das einzige Argument ist die ID der Konversation. Dies umgeht die Konversations-Permission!</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="l l-Scalar l-Scalar-Plain">conversation village_smith</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="damage-player-damage">Damage player: <code>damage</code></h2>
-<p>Damages the player by specified amount of damage. The only argument is a number (can have floating point).</p>
+<p>Verletzt den Spieler um die angegebene Schadensmenge. Das einzige Argument ist eine Zahl (kann Gleitkommazahlen haben).</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="l l-Scalar l-Scalar-Plain">damage 20</span><span class="w"></span>
@@ -1079,7 +1095,7 @@ If you want to use a <code>|</code> character in the command use <code>\|</code>
 </div>
 <h2 id="delete-point-deletepoint">Delete Point: <code>deletepoint</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>Delete the player points in a specified category.</p>
+<p>Löschst die Spielerpunkte in einer bestimmten Kategorie.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="l l-Scalar l-Scalar-Plain">deletepoint npc_attitude</span><span class="w"></span>
@@ -1087,21 +1103,26 @@ If you want to use a <code>|</code> character in the command use <code>\|</code>
 </div>
 <h2 id="door-door">Door: <code>door</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>This event can open and close doors, trapdoors and fence gates. The syntax is exactly the same as in <code>lever</code> event above.</p>
+<p>Dieses Event kann Türen, Falltüren und Zauntore öffnen und schließen. Die Syntax ist genau dieselbe wie im obigen <code>lever</code> Event.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="l l-Scalar l-Scalar-Plain">door 100;200;300;world off</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="remove-potion-effect-deleffect">Remove Potion Effect: <code>deleffect</code></h2>
-<p>Removes the specified potion effects from the player. Use <code>any</code> instead of a list of types to remove all potion effects from the player.</p>
+<p>Entfernt die angegebenen Trankeffekte vom Spieler. Nutze <code>any</code> anstelle einer Liste von Typen, um alle Trankeffekte vom Spieler zu entfernen.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="l l-Scalar l-Scalar-Plain">deleffect ABSORPTION,BLINDNESS</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="potion-effect-effect">Potion Effect: <code>effect</code></h2>
-<p>Adds a specified potion effect to player. First argument is potion type. You can find all available types <a href="https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html">here</a>. Second is integer defining how long the effect will last in seconds. Third argument, also integer, defines level of the effect (1 means first level). Add a parameter <code>ambient</code> to make potion particles appear more invisible (just like beacon effects). To hide particles add a parameter <code>hidden</code>. To hide the icon for the effect add <code>noicon</code>.</p>
+<p>Fügt dem Spieler einen bestimmten Trankeffekt hinzu.
+Das erste Argument ist der Tranktyp. Sie finden alle verfügbaren Typen <a href="https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html">hier</a>. 
+Das zweite Argument ist eine Ganzzahl, die definiert, wie lange der Effekt in Sekunden anhält.
+Das dritte Argument, ebenfalls ganzzahlig, definiert die Stärke des Effekts (1 bedeutet erstes Level).
+Füge einen Parameter <code>ambient</code> hinzu, um Trankpartikel unsichtbarer erscheinen zu lassen (genauso wie Beacon-Effekte).
+Um Partikel zu verbergen, fügen Sie einen Parameter <code>hidden</code> hinzu. Um das Symbol für den Effekt auszublenden, fügen Sie <code>noicon</code> hinzu.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="l l-Scalar l-Scalar-Plain">effect BLINDNESS 30 1 ambient icon</span><span class="w"></span>
@@ -1109,7 +1130,11 @@ If you want to use a <code>|</code> character in the command use <code>\|</code>
 </div>
 <h2 id="explosion-explosion">Explosion: <code>explosion</code></h2>
 <p><strong>static</strong></p>
-<p>Creates an explosion. It can make fire and destroy blocks. You can also define power, so be careful not to blow your server away. Default TNT power is 4, while Wither on creation is 7. First argument can be 0 or 1 and states if explosion will generate fire (like Ghast’s fireball). Second is also 0 or 1 but this defines if block will be destroyed or not. Third argument is the power (float number). At the end (4th attribute) there is location.</p>
+<p>Erzeugt eine Explosion. Es kann Feuer machen und Blöcke zerstören. Du kannst auch die Leistung definieren, also achte darauf, deinen Server nicht wegzublasen.
+Die Standard-TNT-Leistung ist 4, während Wither bei der Schöpfung 7 ist. Das erste Argument kann 0 oder 1 sein und gibt an, ob die Explosion Feuer erzeugen wird (wie Geister Feuerball).
+Das zweite Argument ist auch 0 oder 1, aber dies definiert, ob der Block zerstört wird oder nicht.
+Das dritte Argument ist die Leistung (Float-Zahl).
+Das letzte Argument ist der Ort.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="l l-Scalar l-Scalar-Plain">explosion 0 1 4 100;64;-100;survival</span><span class="w"></span>
@@ -1117,29 +1142,34 @@ If you want to use a <code>|</code> character in the command use <code>\|</code>
 </div>
 <h2 id="folder-folder">Folder: <code>folder</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>It's something like a container for multiple events. You can use it to clarify your code.
-It also features optional delay and period measured in seconds (you can use ticks or minutes if you add <code>ticks</code> or <code>minutes</code> argument).
-It is persistent for events marked as <em>persistent</em>, which means that the events will be fired even after the player logs out.
-Beware though, all conditions are false when the player is offline (even inverted ones),
-so those events should not be blocked by any conditions!
-The only required argument is a list of events separated by commas.</p>
-<p>There are also three optional arguments: <code>delay:</code>, <code>period:</code> and <code>random:</code>.
-Delay and Period is a number of seconds. Delay is the time before execution and period is the time between each event. It's optional and leaving it blank is the same as <code>delay:0</code> or <code>period:0</code>.
-Random is the amount of events, that will be randomly chosen to fire. It's optional and leaving it blank or omit it will fire all events.</p>
+<p>Es ist so etwas wie ein Container für mehrere Events. Du kannst es verwenden, um deinen Code zu verschönern.
+Es verfügt auch über eine optionale Verzögerung und einen in Sekunden gemessenen Zeitraum (Du kannst Ticks oder Minuten verwenden, indem du <code>ticks</code> oder <code>minutes</code> Argument hinzufügst).
+Es ist Konstant für Events markiert als <em>persistent</em>, was bedeutet, dass die Events auch nach dem Abmelden des Spielers ausgelöst werden.
+Beachten jedoch, dass alle Bedingungen falsch sind, wenn der Spieler offline ist (auch invertierte),
+diese Events sollten also nicht durch irgendwelche Bedingungen blockiert werden!
+Das einzige erforderliche Argument ist eine durch Kommas getrennte Liste von Events.</p>
+<p>Es gibt auch drei optionale Argumente: <code>delay:</code>, <code>period:</code> und <code>random:</code>.
+Delay und Period ist eine Anzahl von Sekunden.
+Delay ist die Zeit vor der Ausführung und period ist die Zeit zwischen den einzelnen Events.
+Es ist optional und es leer zu lassen ist dasselbe wie <code>delay:0</code> oder <code>period:0</code>.
+Random ist die Anzahl der Events, die zufällig zum Auslösen ausgewählt werden. Es ist optional und wenn du es leer lässt oder weglässt, werden alle Events ausgelöst.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="l l-Scalar l-Scalar-Plain">folder event1,event2,event3 delay:5 period:5 random:1</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="give-items-give">Give Items: <code>give</code></h2>
-<p>Gives the player predefined items. They are specified exactly as in <code>item</code> condition - list separated by commas, every item can have amount separated by colon. Default amount is 1. If the player doesn't have required space in the inventory, the items are dropped on the ground, unless they are quest items. Then they will be put into the backpack. You can also specify <code>notify</code> keyword to display a simple message to the player about receiving items.</p>
+<p>Gibt dem Spieler vordefinierte Gegenstände. Sie werden genau so angegeben wie im  <code>item</code> Abschnitt definiert. Es können mehrere Gegenstände auf einmal gegeben werden, indem man sie mit einen Komma trennt, außerdem kann jeder Gegenstand eine Anzahl haben angegeben durch <code>:</code> gefolgt von der Anzahl nach den Gegenstand.
+Die Standard-Anzahl ist 1.
+Wenn der Spieler nicht den erforderlichen Platz im Inventar hat, werden die Gegenstände auf den Boden fallen gelassen, es sei denn, es handelt sich um Questgegenstände. Dann werden sie in den Rucksack gesteckt.
+Du kannst dan Parameter <code>notify</code> angeben, um dem Spieler eine einfache Nachricht über den Erhalt von Gegenständen anzuzeigen.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="l l-Scalar l-Scalar-Plain">give emerald:5,emerald_block:9</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="give-journal-givejournal">Give journal: <code>givejournal</code></h2>
-<p>This event simply gives the player his journal. It acts the same way as <strong>/j</strong> command would.</p>
+<p>Dieses Event gibt dem Spieler einfach sein Tagebuch. Es verhält sich genauso wie der Befehl <strong>/j</strong>.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="l l-Scalar l-Scalar-Plain">givejournal</span><span class="w"></span>
@@ -1147,7 +1177,8 @@ Random is the amount of events, that will be randomly chosen to fire. It's optio
 </div>
 <h2 id="global-point-globalpoint">Global point: <code>globalpoint</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>This works the same way as the normal point event but instead to manipulating the points for a category of a specific player it manipulates points in a global category. These global categories are player independent, so you could for example add a point to such a global category every time a player does a quest and give some special rewards for the 100th player who does the quest.</p>
+<p>Dies funktioniert auf die gleiche Weise wie das normale Punkte-Event, aber anstatt die Punkte für eine Kategorie eines bestimmten Spielers zu manipulieren, manipuliert es Punkte in einer globalen Kategorie.
+Diese globalen Kategorien sind Spieler unabhängig, so kannst du zum Beispiel jedes Mal, wenn ein Spieler eine Quest macht, einen Punkt zu einer solchen globalen Kategorie hinzufügen und dem 100. Spieler, der die Quest macht, einige besondere Belohnungen geben.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="l l-Scalar l-Scalar-Plain">globalpoint global_knownusers 1</span><span class="w"></span>
@@ -1155,28 +1186,30 @@ Random is the amount of events, that will be randomly chosen to fire. It's optio
 </div>
 <h2 id="global-tag-globaltag">Global tag: <code>globaltag</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>Works the same way as a normal tag event, but instead of setting a tag for one player it sets it globaly for all players.</p>
+<p>Funktioniert genauso wie ein normales Tag-Event, aber anstatt ein Tag für einen Spieler zu setzen, wird es global für alle Spieler gesetzt.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="l l-Scalar l-Scalar-Plain">globaltag add global_areNPCsAgressive</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="if-else-if">If else: <code>if</code></h2>
-<p>This event will check a condition, and based on the outcome it will run the first or second event. The instruction string is <code>if condition event1 else event2</code>, where <code>condition</code> is a condition ID and <code>event1</code> and <code>event2</code> are event IDs. <code>else</code> keyword is mandatory between events for no practical reason.</p>
+<p>Dieses Event prüft eine Bedingung und führt je nach Ergebnis das erste oder zweite Event aus.
+Wird folgendermaßen definiert: <code>if condition event1 else event2</code>, wobei <code>condition</code> eine Bedingung-ID ist und <code>event1</code> und <code>event2</code> Event-IDs sind.
+Das <code>else</code> Parameter ist ohne praktischen Grund zwischen den Events obligatorisch.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="l l-Scalar l-Scalar-Plain">if sun rain else sun</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="l l-Scalar l-Scalar-Plain">if sonnig lass_es_regnen else lass_es_sonnig_sein</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="journal-journal">Journal: <code>journal</code></h2>
 <p><strong>static</strong></p>
-<p>Adds or deletes an entry to/from a player's journal. Journal entries have to be defined in the <code>journal</code> section. The
-first argument is the action to perform, the second one is the name of the entry if required. Changing journal entries
-will also reload the journal.</p>
-<p>Possible actions are:
-- <code>add</code>: Adds a page to the journal.
-- <code>delete</code>: Deletes a page from the journal.
-- <code>update</code>: Refreshes the journal. This is especially useful when you need to update the main page.</p>
+<p>Fügt einen Eintrag zum/aus dem Tagebuch eines Spielers hinzu oder löscht ihn. Tagebucheinträge müssen im Abschnitt <code>journal</code> definiert werden.
+Das erste Argument ist die auszuführende Aktion, der zweite ist der Name des Eintrags, falls erforderlich.
+Tagebucheinträge ändern wird auch das Journal neu laden.</p>
+<p>Mögliche Aktionen sind:
+- <code>add</code>: Fügt dem Tagebuch eine Seite hinzu.
+- <code>delete</code>: Löscht eine Seite aus dem Tagebuch
+- <code>update</code>: Läd das Tagebuch neu. Dies ist besonders nützlich, wenn du die Hauptseite aktualisieren musst.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="l l-Scalar l-Scalar-Plain">journal add quest_started</span><span class="w"></span>
@@ -1185,23 +1218,24 @@ will also reload the journal.</p>
 </code></pre></div>
 </div>
 <h2 id="kill-kill">Kill: <code>kill</code></h2>
-<p>Kills the player. Nothing else.</p>
+<p>Tötet den Spieler. Nichts anderes.</p>
 <h2 id="kill-mobs-killmob">Kill Mobs: <code>killmob</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>Kills all mobs of given type at the location. First argument is
-the <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html">type of the mob</a>. Next argument is the
-location. Third argument is the radius around the location, in which the mobs must be to get killed.<br />
-You can also specify <code>name:</code> argument, followed by the name of the mob which should get killed. All <code>_</code> characters will
-be replaced with spaces. If you want to kill only mobs that have been marked using the spawn mob event use <code>marked:</code>
-argument followed by the keyword.</p>
-<p>Only mobs that are in loaded chunks can be killed by using this event.</p>
+<p>Tötet alle Mobs des angegebenen Typs am Ort.
+Erstes Argument ist
+die <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html">Art des Mobs</a>.
+Das nächste Argument ist der Ort.
+Drittes Argument ist der Radius um den Ort, in dem sich die Mobs aufhalten müssen, um getötet zu werden.
+Du kannst auch das Argument <code>name:</code> angeben, gefolgt vom Namen des Mobs, der getötet werden soll.
+Alle <code>_</code>-Zeichen werden durch Leerzeichen ersetzt. Wenn du nur Mobs töten möchtest, die mit dem Spawn-Mob-Event markiert wurden, verwende <code>marked:</code> Argument gefolgt vom Schlüsselwort.
+Mit diesem Event können nur Mobs getötet werden, die sich in geladenen Chunks befinden.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="l l-Scalar l-Scalar-Plain">killmob ZOMBIE 100;200;300;world 40 name:Bolec</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="language-event-language">Language Event: <code>language</code></h2>
-<p>This event changes player's language to the specified one. There is only one argument, the language name.</p>
+<p>Dieses Event ändert die Sprache des Spielers in die angegebene Sprache. Es gibt nur ein Argument, den Sprachnamen.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="l l-Scalar l-Scalar-Plain">language en</span><span class="w"></span>
@@ -1209,7 +1243,7 @@ argument followed by the keyword.</p>
 </div>
 <h2 id="lever-lever">Lever: <code>lever</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>This event can switch a lever. The first argument is a location and the second one is state: <code>on</code>, <code>off</code> or <code>toggle</code>.</p>
+<p>Dieses Event kann einen Hebel umschalten. Das erste Argument ist ein Ort und das zweite ein Zustand: <code>on</code>, <code>off</code> oder <code>toggle</code>.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="l l-Scalar l-Scalar-Plain">lever 100;200;300;world toggle</span><span class="w"></span>
@@ -1217,19 +1251,19 @@ argument followed by the keyword.</p>
 </div>
 <h2 id="lightning-lightning">Lightning: <code>lightning</code></h2>
 <p><strong>static</strong></p>
-<p>Strikes a lightning at given location. The only argument is the location.</p>
+<p>Schlägt an einem bestimmten Ort einen Blitz ein. Einziges Argument ist der Standort.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="l l-Scalar l-Scalar-Plain">lightning 100;64;-100;survival</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="notification-notify">Notification: <code>notify</code></h2>
-<p>Displays a notification using the NotifyIO system.</p>
+<p>Zeigt eine Benachrichtigung mit dem NotifyIO-System an.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>All colons (<code>:</code>) in the message part of the notification need to be escaped, including those inside variables.
-One backslash (<code>\</code>) is required when using no quoting at all (<code>...</code>) or single quotes
-(<code>'...'</code>). Two backslashes are required (<code>\\</code>) when using double quotes (<code>"..."</code>).</p>
+<p>Alle Doppelpunkte (<code>:</code>) im Nachrichtenteil der Benachrichtigung müssen maskiert werden, einschließlich der Variablen.
+Ein Backslash (<code>\</code>) ist erforderlich, wenn überhaupt keine Anführungszeichen (<code>...</code>) verwendet werden oder einfache Anführungszeichen (<code>...</code>).
+Zwei Backslash sind erforderlich (<code>\\</code>) bei Verwendung von doppelten Anführungszeichen (<code>"..."</code>).</p>
 <p>Examples:<br>
 <code>eventName: notify Peter:Heya %player%!</code> :arrow_right: <code>eventName: notify Peter{++\++}:Heya %player%!</code><br>
 <code>eventName: {=='==}notify Peter:Heya %player%!{=='==}</code> :arrow_right: <code>eventName: {=='==}notify Peter{++\++}:Heya %player%!{=='==}</code><br>
@@ -1240,68 +1274,68 @@ One backslash (<code>\</code>) is required when using no quoting at all (<code>.
 <thead>
 <tr>
 <th>Option</th>
-<th>Description</th>
+<th>Beschreibung</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>message</td>
-<td>The message that will be displayed. Supports variables and translations. <em>Required, must be first</em></td>
+<td>Die Nachricht, die angezeigt wird. Unterstützt Variablen und Übersetzungen. <em>Erforderlich, muss zuerst sein</em></td>
 </tr>
 <tr>
 <td>category</td>
-<td>Will load all settings from that Notification Category. Can be a comma-seperated list. The first existent category will be used. <em>Optional</em></td>
+<td>Lädt alle Einstellungen aus dieser Benachrichtigungskategorie. Kann eine durch Kommas getrennte Liste sein. Die erste vorhandene Kategorie wird verwendet. <em>Optional</em></td>
 </tr>
 <tr>
 <td>io</td>
-<td>Any <a href="Notification-IO's-&amp;-Categories.md">NotifyIO</a>. Overrides the "category" settings. <em>Optional</em></td>
+<td>irgendeine <a href="Notification-IO's-&amp;-Categories.md">NotifyIO</a>. Überschreibt die „Kategorie“-Einstellungen. <em>Optional</em></td>
 </tr>
 <tr>
 <td><a href="Notification-IO's-&amp;-Categories.md#notify-ios">NotifyIO</a></td>
-<td>Any setting from the defined notifyIO. Can be used multiple times. Overrides the "category" settings. <em>Optional</em></td>
+<td>Jede Einstellung aus dem definierten NotifyIO. Kann mehrfach verwendet werden. Überschreibt die „Kategorie“-Einstellungen. <em>Optional</em></td>
 </tr>
 </tbody>
 </table>
-<p>The fallback NotifyIO is <code>chat</code> if no argument other than <code>message</code> is specified.  <br />
-<code>message</code> is the only argument of this event that is not <code>key:value</code> based. You can freely add any text with spaces there.</p>
-<p>It also allows you to provide multiple translations using a special syntax: 
+<p>Die Standard NotifyIO ist <code>chat</code>, wenn kein anderes Argument als <code>message</code> angegeben ist. 
+<code>message</code> ist das einzige Argument dieses Event, das nicht <code>Schlüssel:Wert</code> basierent ist. Du kannst dort beliebigen Text mit Leerzeichen hinzufügen.</p>
+<p>Es ermöglicht dir auch, mehrere Übersetzungen mit einer speziellen Syntax bereitzustellen:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">{en}</span><span class="nv"> </span><span class="s">ABC</span><span class="nv"> </span><span class="s">{de}</span><span class="nv"> </span><span class="s">DEF&quot;</span><span class="w"></span>
 </code></pre></div>
-The value in <code>{}</code> is a language key from messages.yml. Any text after the language key until the next language key
-belongs to the specified language. There must be a space between the language key and the message.
-In this example, english users would see <code>ABC</code> and german ones would see <code>DEF</code>.</p>
-<h3>Examples:</h3>
+Der Wert in <code>{}</code> ist der Sprach-Kürzel definiert in der messages.yml. Jeder Text zwischen den Sprach-Kürzeln gehört zur Sprache des vorherigen Sprach-kürzel. 
+Zwischen dem Sprach-kürzel und der Nachricht muss ein Leerzeichen stehen.
+In diesem Beispiel würden englische Benutzer <code>ABC</code> und deutsche <code>DEF</code> sehen.</p>
+<h3>Beispiele:</h3>
 
-<p>Check out the documentation about <a href="Notification-IO's-&amp;-Categories.md#categories">Notify Categories</a> and 
-<a href="Notification-IO's-&amp;-Categories.md#notify-ios">Notify IO options</a> if you haven't yet. You must understand these two if
-you want to use the Notify system to it's full extend.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1">#The simplest of all notify events. Just a chat message:</span><span class="w"></span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nt">customEvent</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">%player%!&quot;</span><span class="w">  </span>
+<p>Sehe dir die Dokumentation zu <a href="Notification-IO's-&amp;-Categories.md#categories">Notify Categories</a> und 
+<a href="Notification-IO's-&amp;-Categories.md#notify-ios">Notify IO options</a> an.
+Du musst beides verstehen, wenn du das Notify-System in vollem Umfang nutzen möchtest.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1">#Das einfachste aller Notify-Event nur eine Chat-Nachricht:</span><span class="w"></span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nt">customEvent</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Hallo</span><span class="nv"> </span><span class="s">%player%!&quot;</span><span class="w">  </span>
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1">#It&#39;s the same as this one since &#39;chat&#39; is the default IO.</span><span class="w"></span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="nt">theSame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">%player%!</span><span class="nv"> </span><span class="s">io:chat&quot;</span><span class="w"></span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1">#Es ist dasselbe wie oben, da `chat` die Standard-IO ist.</span><span class="w"></span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="nt">theSame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Hallo</span><span class="nv"> </span><span class="s">%player%!</span><span class="nv"> </span><span class="s">io:chat&quot;</span><span class="w"></span>
 <a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="c1">#This one displays a title and a subtile:</span><span class="w"></span>
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="nt">myTitle</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">title.\nThis</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">subtitle.</span><span class="nv"> </span><span class="s">io:title&quot;</span><span class="w"></span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="c1">#Dieser zeigt einen Titel und einen Untertitel an:</span><span class="w"></span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="nt">myTitle</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Dies</span><span class="nv"> </span><span class="s">ist</span><span class="nv"> </span><span class="s">ein</span><span class="nv"> </span><span class="s">Titel.\nDies</span><span class="nv"> </span><span class="s">ist</span><span class="nv"> </span><span class="s">ein</span><span class="nv"> </span><span class="s">Untertitel.</span><span class="nv"> </span><span class="s">io:title&quot;</span><span class="w"></span>
 <a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
-<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="c1">#Plays a sound:</span><span class="w"></span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="c1">#Spielt eine sound:</span><span class="w"></span>
 <a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="nt">mySound</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">io:sound</span><span class="nv"> </span><span class="s">sound:x.y.z&quot;</span><span class="w"></span>
 <a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
-<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="c1">#This one explicitly defines an io (bossbar) and adds one bossbarIO option + one soundIO option:</span><span class="w"></span>
-<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="nt">myBar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">custom</span><span class="nv"> </span><span class="s">message.</span><span class="nv"> </span><span class="s">io:bossbar</span><span class="nv"> </span><span class="s">barColor:red</span><span class="nv"> </span><span class="s">sound:block.anvil.use&quot;</span><span class="w"></span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="c1">#Dieses Event nutzt die Bossbar NachrichtIO mit der Option der Balkenfarbe und einen sound:</span><span class="w"></span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="nt">myBar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Dies</span><span class="nv"> </span><span class="s">ist</span><span class="nv"> </span><span class="s">eine</span><span class="nv"> </span><span class="s">benutzerdefinierte</span><span class="nv"> </span><span class="s">Nachricht.</span><span class="nv"> </span><span class="s">io:bossbar</span><span class="nv"> </span><span class="s">barColor:red</span><span class="nv"> </span><span class="s">sound:block.anvil.use&quot;</span><span class="w"></span>
 <a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>
-<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="c1">#Some events with categories.</span><span class="w"></span>
-<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="nt">myEvent1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">custom</span><span class="nv"> </span><span class="s">message!</span><span class="nv"> </span><span class="s">category:info&quot;</span><span class="w"></span>
-<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="nt">myEvent2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">custom</span><span class="nv"> </span><span class="s">message!</span><span class="nv"> </span><span class="s">category:firstChoice,secondChoice&quot;</span><span class="w"></span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="c1">#Einige Events mit Kategorien.</span><span class="w"></span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="nt">myEvent1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Dies</span><span class="nv"> </span><span class="s">ist</span><span class="nv"> </span><span class="s">eine</span><span class="nv"> </span><span class="s">benutzerdefinierte</span><span class="nv"> </span><span class="s">Nachricht!</span><span class="nv"> </span><span class="s">category:info&quot;</span><span class="w"></span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="nt">myEvent2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Dies</span><span class="nv"> </span><span class="s">ist</span><span class="nv"> </span><span class="s">eine</span><span class="nv"> </span><span class="s">benutzerdefinierte</span><span class="nv"> </span><span class="s">Nachricht!</span><span class="nv"> </span><span class="s">category:firstChoice,secondChoice&quot;</span><span class="w"></span>
 <a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>
-<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a><span class="c1">#You can also override category settings:</span><span class="w"></span>
-<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a><span class="nt">myEvent3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Another</span><span class="nv"> </span><span class="s">message!</span><span class="nv"> </span><span class="s">category:info</span><span class="nv"> </span><span class="s">io:advancement</span><span class="nv"> </span><span class="s">frame:challenge&quot;</span><span class="w"></span>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a><span class="c1">#Du kannst auch Kategorieeinstellungen überschreiben:</span><span class="w"></span>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a><span class="nt">myEvent3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">Eine</span><span class="nv"> </span><span class="s">andere</span><span class="nv"> </span><span class="s">Nachricht!</span><span class="nv"> </span><span class="s">category:info</span><span class="nv"> </span><span class="s">io:advancement</span><span class="nv"> </span><span class="s">frame:challenge&quot;</span><span class="w"></span>
 <a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>
-<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a><span class="c1">#Use multiple languages:</span><span class="w"></span>
-<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a><span class="nt">multilanguage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">{en}</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">english</span><span class="nv"> </span><span class="s">person!</span><span class="nv"> </span><span class="s">{de}</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">german</span><span class="nv"> </span><span class="s">person!</span><span class="nv"> </span><span class="s">{es}</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">spanish</span><span class="nv"> </span><span class="s">person!&quot;</span><span class="w"></span>
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a><span class="c1">#Nutze mehrere Sprachen:</span><span class="w"></span>
+<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a><span class="nt">mehrereSprachen</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;notify</span><span class="nv"> </span><span class="s">{en}</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">english</span><span class="nv"> </span><span class="s">person!</span><span class="nv"> </span><span class="s">{de}</span><span class="nv"> </span><span class="s">Hallo</span><span class="nv"> </span><span class="s">deutsche</span><span class="nv"> </span><span class="s">Person!</span><span class="nv"> </span><span class="s">{es}</span><span class="nv"> </span><span class="s">Hola</span><span class="nv"> </span><span class="s">españoles!&quot;</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="broadcast-notifyall">Broadcast: <code>notifyall</code></h2>
-<p>This events works just like the <a href="#notification-notify">notify</a> event but shows the notification for all online players.</p>
+<p>Dieses Event funktioniert genauso wie <a href="#notification-notify">notify</a> Event, zeigt aber die Benachrichtigung für alle Online-Spieler an.</p>
 <h2 id="objective-objective">Objective: <code>objective</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
 <p>Manages the objectives. Syntax is <code>objective &lt;action&gt; name</code>, where <code>&lt;action&gt;</code> can be <em>start</em>/<em>add</em> (one of the two),
@@ -1313,17 +1347,17 @@ you want to use the Notify system to it's full extend.
 </code></pre></div>
 </div>
 <h2 id="opsudo-opsudo">OPsudo: <code>opsudo</code></h2>
-<p>This event is similar to the <code>sudo</code> event, the only difference is that it will fire a command as the player with temporary OP permissions. 
-Additional commands can be defined by separating them with <code>|</code> character. If you want to use a <code>|</code> character in the message use <code>\|</code>.</p>
-<p>Looking for <a href="#sudo-sudo">run as normal player</a>?
-Looking for <a href="#command-command">console commands</a>?</p>
+<p>Dieses Event ist ähnlich wie das <code>sudo</code> Event, der einzige Unterschied ist, dass es ein Befehl als Spieler mit temporäre OP-Berechtigungen ausführt.
+Zusätzliche Befehle können definiert werden, indem sie mit <code>|</code> getrennt werden. Wenn du ein <code>|</code>-Zeichen in der Nachricht verwenden möchtest, verwende <code>\|</code>.</p>
+<p>Suchst du nach <a href="#sudo-sudo">führe ein Befehl als normaler Spieler aus</a>?
+Suchst du nach <a href="#command-command">führe Befehle von der Konsole aus</a>?</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="l l-Scalar l-Scalar-Plain">opsudo spawn</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="party-event-party">Party event: <code>party</code></h2>
-<p>Runs the specified list of events (third argument) for every player in a party. More info about parties in "Party" chapter in <strong>Reference</strong> section.</p>
+<p>Führt die angegebene Liste von Events (drittes Argument) für jeden Spieler in einer Party aus. Weitere Informationen zu Partys finden Sie im Kapitel <code>party</code> im <strong>Reference</strong> Abschnitt.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="l l-Scalar l-Scalar-Plain">party 10 has_tag1,!has_tag2 give_reward</span><span class="w"></span>
@@ -1331,12 +1365,12 @@ Looking for <a href="#command-command">console commands</a>?</p>
 </div>
 <h2 id="pick-random-pickrandom">Pick random: <code>pickrandom</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>Another container for events. It picks one (or multiple) of the given events and runs it.
-You must specify how likely it is that each event is picked by adding the percentage before the event's id. 
-The event won't break if your total percentages are above 100%. </p>
-<p>It picks one event from the list by default, but you can add an optional <code>amount:</code> if you want more to be picked.
-Note that only as many events as specified can be picked and <code>amount:0</code> will do nothing.</p>
-<p>There must be two <code>%%</code> before the event's name if variables are used, one is from the variable and the other one from the event's syntax.</p>
+<p>Ein weiterer Container für Events. Es wählt ein (oder mehrere) der gegebenen Events und führt sie aus.
+Du musst angeben wie wahrscheinlich es ist das jeweilige Event zu bekommen, indem du einen Prozentwert vor der Event-ID setzt.
+Dieses Event funktionert auch mit einem Gesamtprozentwert über 100%. </p>
+<p>Es wählt Standardmäßig ein Event aus der Liste, aber du kannst das Argument <code>amount:</code> angeben, wenn du willst, dass mehrere ausgewählt werden.
+Beachte das nur so viele Events wie vorhanden ausgewählt werden können und <code>amount:0</code> macht nichts.</p>
+<p>Es müssen zwei <code>%%</code> vor dem Event-Name stehen, wenn Variablen verwendet werden, eins ist von der Variable und das andere ist von der Event-Syntax.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="l l-Scalar l-Scalar-Plain">pickrandom 20.5%event1,0.5%event2,79%event3 amount:2</span><span class="w"></span>
@@ -1345,10 +1379,10 @@ Note that only as many events as specified can be picked and <code>amount:0</cod
 </div>
 <h2 id="point-point">Point: <code>point</code></h2>
 <p><strong>persistent</strong></p>
-<p>Gives the player a specified amount of points in a specified category. Amount can be negative if you want to subtract points.
-You can also use an asterisk to do multiplication (or division, if you use a fraction).
-First argument after the event name must be a category, and the second one - amount of points to give/take/multiply.
-This event also supports an optional <code>notify</code> argument that will display information about the change using the notification system.</p>
+<p>Gibt dem Spieler eine bestimmte Anzahl von Punkten in einer bestimmten Kategorie. Der Betrag kann negativ sein, wenn Sie Punkte abziehen möchten.
+Sie können auch ein Sternchen zum Multiplizieren verwenden (oder Division, wenn Sie einen Bruch verwenden).
+Das erste Argument nach dem Event-Namen muss eine Kategorie sein, und das zweite - die Anzahl der Punkte, die vergeben/genommen/multipliziert werden sollen.
+Dieses Event unterstützt auch ein optionales <code>notify</code> Argument, das Informationen über die Änderung mithilfe des Benachrichtigungssystems anzeigt.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="l l-Scalar l-Scalar-Plain">point npc_attitude 10</span><span class="w"></span>
@@ -1361,17 +1395,18 @@ This event also supports an optional <code>notify</code> argument that will disp
 </div>
 <h2 id="run-events-run">Run events: <code>run</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>This event allows you to specify multiple instructions in one, long instruction. Each instruction must be started 
-with the <code>^</code> character (it divides all the instructions). It's not the same as the <code>folder</code> event, because you have to
-specify the actual instruction, not an event name. It is also fired on the same tick, not on the next one like in <code>folder</code>.
-Don't use conditions here, it behaves strangely. We will fix this in 2.0.</p>
+<p>Mit diesem Event kannst du mehrere Anweisungen in einer angeben. Jede Anweisungen muss mit einem <code>^</code>  Zeichen starten (es trennt alle Anweisungen).
+Es ist nicht dasselbe wie das <code>folder</code> Event, weil du die eigentliche Anweisung angeben musst, nicht nur den Event-Namen.
+Es wird auch beim selben Tick gefeuert, nicht beim nächsten wie bei <code>folder</code>.
+Verwenden Sie hier keine Bedingungen, es verhält sich seltsam. Wir werden dies in 2.0 beheben.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="l l-Scalar l-Scalar-Plain">run ^tag add beton ^give emerald:5 ^entry add beton ^kill</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="scoreboard-score">Scoreboard: <code>score</code></h2>
-<p>This event works in the same way as <code>point</code> event, the only difference is that is uses scoreboards instead of points. You can add, subtract, multiply and divide scores in objectives on the scoreboard. The first argument is the name of the objective, second one is a number. It can be positive for additon, negative for subtraction or prefixed with an asterisk for multiplication. Multiplying by fractions is the same as dividing.</p>
+<p>Dieses Event funktioniert genauso wie das <code>point</code>-Event, der einzige Unterschied besteht darin, dass es Scoreboards anstelle von Punkten verwendet. Sie können Punktzahlen in Zielen auf der Anzeigetafel addieren, subtrahieren, multiplizieren und dividieren.
+Das erste Argument ist der Name des Ziels, das zweite eine Zahl. Es kann positiv für die Addition, negativ für die Subtraktion oder mit einem vorangestellten Sternchen für die Multiplikation sein. Das Multiplizieren mit Brüchen ist dasselbe wie das Dividieren.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="l l-Scalar l-Scalar-Plain">score kills 1</span><span class="w"></span>
@@ -1379,9 +1414,9 @@ Don't use conditions here, it behaves strangely. We will fix this in 2.0.</p>
 </div>
 <h2 id="set-block-setblock">Set Block: <code>setblock</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>Changes the block at the given position.
-The first argument is a <a href="../Reference/#block-selectors">Block Selector</a>, the second a location.
-Very powerful if used to trigger redstone contraptions.</p>
+<p>Ändert den Block an der angegebenen Position.
+Das erste Argument ist ein <a href="../Reference/#block-selectors">Block</a>, das zweite ein Ort.
+Sehr mächtig, wenn es zum Auslösen von Redstone-Apparaten verwendet wird.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="l l-Scalar l-Scalar-Plain">setblock REDSTONE_BLOCK 100;200;300;world</span><span class="w"></span>
@@ -1389,8 +1424,12 @@ Very powerful if used to trigger redstone contraptions.</p>
 </div>
 <h2 id="spawn-mob-spawn">Spawn Mob: <code>spawn</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>Spawns specified amount of mobs of given type at the location. First argument is a location. Next is <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html">type of the mob</a>. The last, third argument is integer for amount of mobs to be spawned. You can also specify <code>name:</code> argument, followed by the name of the mob. All <code>_</code> characters will be replaced with spaces. You can also mark the spawned mob with a keyword using <code>marked:</code> argument. It won't show anywhere, and you can check for only marked mobs in <code>mobkill</code> objective.</p>
-<p>You can specify armor which the mob will wear and items it will hold with <code>h:</code> (helmet), <code>c:</code> (chestplate), <code>l:</code> (leggings), <code>b:</code> (boots), <code>m:</code> (main hand) and <code>o:</code> (off hand) optional arguments. These take a single item without amount, as defined in the <em>items</em> section. You can also add a list of drops with <code>drops:</code> argument, followed by a list of items with amounts after colons, separated by commas.</p>
+<p>Spawnt eine bestimmte Anzahl von Mobs eines bestimmten Typs am Ort. Das erste Argument ist ein Standort.
+Das nächste ist <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html">die Art des Mobs</a>. Das letzte, dritte Argument ist eine Ganzzahl für die Menge der zu spawnenden Mobs.
+Sie können auch das Argument <code>name:</code> angeben, gefolgt vom Namen des Mobs. Alle <code>_</code> Zeichen werden mit Leerzeichen ersetzt. Sie können den gespawnten Mob auch mit einem Schlüsselwort markieren, indem Sie das Argument <code>marked:</code> verwenden.
+Es wird nirgendwo angezeigt, und Sie können im Ziel <code>mobkill</code> nun nach markierten Mobs suchen.</p>
+<p>Sie können die Rüstung angeben, die der Mob tragen wird, und die Gegenstände, mit denen er ausgestattet ist <code>h:</code> (Helm), <code>c:</code> (Brustpanzer), <code>l:</code> (Hose), <code>b:</code> (Schuhe), <code>m:</code> (Haupt Hand) and <code>o:</code> (Neben Hand) optionale Argumente. 
+Dies nimmt ein Gegenstand ohne die Anzahl, so wie in dem <em>items</em> Abschnitt definiert. Du kannst auch eine Liste von fallen gelassenen Gegenständen mit dem Argument <code>drops:</code> definieren, gefolgt von einer Liste mit Gegenständen mit Anzahl nach Doppelpunkt, geteilt durch Komma.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="l l-Scalar l-Scalar-Plain">spawn 100;200;300;world SKELETON 5 marked:targets</span><span class="w"></span>
@@ -1402,10 +1441,10 @@ Very powerful if used to trigger redstone contraptions.</p>
 </code></pre></div>
 </div>
 <h2 id="sudo-sudo">Sudo: <code>sudo</code></h2>
-<p>This event is similar to <code>command</code> event, the only difference is that it will fire a command as the player (often referred to as player commands).
-Additional commands can be defined by separating them with <code>|</code> character. If you want to use a <code>|</code> character in the message use <code>\|</code>.</p>
-<p>Looking for <a href="#opsudo-opsudo">run as op</a>?
-Looking for <a href="#command-command">console commands</a>?</p>
+<p>Dieses Event ist ähnlich wie das <code>command</code> Event, der einzige Unterschied ist, dass es einen Befehl als Spieler auslöst (oft als Spielerbefehle bezeichnet).
+Zusätzliche Befehle können definiert werden, indem sie mit  <code>|</code> getrennt werden. Wenn du das Zeichen <code>|</code> in einen Befehl nutzen willst nutze <code>\|</code>.</p>
+<p>Suchst du nach <a href="#opsudo-opsudo">führe einen Befehl als OP aus</a>?
+Suchst du nach <a href="#command-command">Konsolen Befehl</a>?</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="l l-Scalar l-Scalar-Plain">sudo spawn</span><span class="w"></span>
@@ -1413,22 +1452,25 @@ Looking for <a href="#command-command">console commands</a>?</p>
 </div>
 <h2 id="tag-tag">Tag: <code>tag</code></h2>
 <p><strong>persistent</strong>, <strong>static</strong></p>
-<p>This event adds (or removes) a tag to the player. The first argument after event's name must be <code>add</code> or <code>del</code>.
-Next goes the tag name. It can't contain spaces (though <code>_</code> is fine). Additional tags can be added, separated by commas (without spaces).</p>
+<p>Dieses Event fügt dem Spieler ein Tag hinzu (oder entfernt es). Das erste Argument nach dem Namen des Events muss <code>add</code> oder <code>del</code> sein.
+Als nächstes kommt der Tag-Name. Es darf keine Leerzeichen enthalten ( <code>_</code> jedoch ist okay). Zusätzliche Tags können durch Kommas getrennt (ohne Leerzeichen) hinzugefügt werden.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="l l-Scalar l-Scalar-Plain">tag add quest_started,new_entry</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="take-items-take">Take Items: <code>take</code></h2>
-<p>Removes items from the player’s inventory, armor slots or backpack.
-The items itself must be defined in the <code>items</code> section, optionally with an amount after a colon.
-Which inventory types are checked is defined by the <code>invOrder:</code>
-option. You can use <code>Backpack</code>, <code>Inventory</code>, <code>Offhand</code> and <code>Armor</code> there. One after another will be checked if multiple types are defined.</p>
-<p>Note: If the items aren't quest items don't use <code>take</code>event with player options in conversations!
-The player can drop items before selecting the option and pickup them after the event fires.
-Validate it on the NPC’s reaction!</p>
-<p>You can also specify <code>notify</code> keyword to display a simple message to the player about loosing items.</p>
+<p>Entfernt Gegenstände aus dem Inventar, den Rüstungsfächern oder dem Rucksack des Spielers.
+Die Gegenstände selbst müssen im Abschnitt <code>items</code> definiert werden, optional mit Anzahl nach einem Doppelpunkt.
+Welche Inventar typen geprüft werden, wird durch <code>invOrder:</code> definiert.
+Du kannst <code>Backpack</code>, <code>Inventory</code>, <code>Offhand</code> und <code>Armor</code> hier verwenden. Sind mehrere Typen definiert, wird nacheinander geprüft.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Hinweis: Wenn es sich bei den Items nicht um Quest-Items handelt, verwenden Sie in Gesprächen kein <code>take</code>-Event mit Spieleroptionen!
+Der Spieler kann Gegenstände fallen lassen, bevor er die Option auswählt, und sie nach dem Auslösen des Events aufheben.
+Bestätigen Sie es anhand der Reaktion des NPCs!</p>
+</div>
+<p>Du kannst auch das Schlüsselwort <code>notify</code> angeben, um dem Spieler eine einfache Nachricht über den Verlust von Gegenständen anzuzeigen.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="l l-Scalar l-Scalar-Plain">take emerald:120,sword</span><span class="w"></span>
@@ -1439,28 +1481,28 @@ Validate it on the NPC’s reaction!</p>
 </code></pre></div>
 </div>
 <h2 id="time-time">Time: <code>time</code></h2>
-<p>Sets or adds time. The only argument is time to be set (integer) or time to be added (integer prefixed with +),
-in 24 hours format. Subtracting time is done by adding more time (if you think of this, it actually makes sense).
-Minutes can be achieved with floating point.</p>
+<p>Stellt die Zeit ein oder fügt sie hinzu. Das einzige Argument ist die festzulegende Zeit (Ganzzahl) oder die hinzuzufügende Zeit (Ganzzahl mit vorangestelltem +),
+in 24 Stunden Format. Das Subtrahieren von Zeit erfolgt durch Hinzufügen von mehr Zeit (wenn Sie daran denken, macht es tatsächlich Sinn).
+Minuten können mit Fließkomma erreicht werden.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="l l-Scalar l-Scalar-Plain">time +6</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="teleport-teleport">Teleport: <code>teleport</code></h2>
-<p>Teleports the player to a specified location, with or without head rotation. It will also end the conversation,
-if the player has one active.The first and only argument must be location. It's a good idea to use yaw and pitch here.</p>
+<p>Teleportiert den Spieler an einen bestimmten Ort, mit oder ohne Kopfdrehung. Es wird auch das Gespräch beenden,
+wenn der Spieler eins aktiv hat. Das erste und einzige Argument muss der Ort sein. Es ist eine gute Idee hier yaw und pitch zu verwenden.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="l l-Scalar l-Scalar-Plain">teleport 123;32;-789;world_the_nether;180;45</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="variable-variable">Variable: <code>variable</code></h2>
-<p>This event has only one purpose: Change values that are stored in <code>variable</code> objective variables. The first argument is
-the ID of the <code>variable</code> objective. The second argument is the name of the variable to set. The third argument is the
-value to set. Both the name and value can use <code>%...%</code> variables. To delete a variable you can use <code>""</code>. Refer to the
-<a href="Objectives-List.md#variable-variable"><code>variable</code> objective</a> documentation for more information about
-storing variables. This event will do nothing if the player does not already have a <code>variable</code> objective assigned to them.</p>
+<p>Dieses Event hat nur einen Zweck: Werte ändern, die in <code>variable</code> Ziele gespeichert sind. Das erste Argument ist
+die ID des <code>variable</code> Ziels. Das zweite Argument ist der Name der zu setzenden Variablen.
+Das dritte Argument ist die Wert zum einzustellen. Sowohl der Name als auch der Wert können <code>%...%</code>-Variablen verwenden. Um eine Variable zu löschen, können Sie <code>""</code> verwenden.
+Sieh dir die <a href="Objectives-List.md#variable-variable"><code>variable</code> objective</a> Dokumentation für weitere Informationen zum Speichern von Variablen an.
+Dieses Event hat keine Auswirkung, wenn dem Spieler nicht bereits ein <code>variable</code> Ziel zugewiesen wurde.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="l l-Scalar l-Scalar-Plain">variable CustomVariable MyFirstVariable Goodbye!</span><span class="w"></span>
@@ -1469,14 +1511,14 @@ storing variables. This event will do nothing if the player does not already hav
 </code></pre></div>
 </div>
 <h2 id="weather-weather">Weather: <code>weather</code></h2>
-<p>Sets weather. The argument is <code>sun</code>, <code>rain</code> or <code>storm</code>.</p>
+<p>Stellt das Wetter ein. Das Argument ist <code>sun</code>, <code>rain</code> oder <code>storm</code>.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="l l-Scalar l-Scalar-Plain">weather rain</span><span class="w"></span>
 </code></pre></div>
 </div>
 <h2 id="give-experience-experience">Give experience: <code>experience</code></h2>
-<p>Gives the specified amount of experience points to the player. You can give whole levels by adding the <code>level</code> argument.</p>
+<p>Gibt dem Spieler die angegebene Menge an Erfahrungspunkten. Du kannst auch ganze Level geben, idem du das Argument <code>level</code> hinzufügst.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="l l-Scalar l-Scalar-Plain">experience 4 level</span><span class="w"></span>
