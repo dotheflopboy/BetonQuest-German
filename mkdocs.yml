@@ -2,7 +2,11 @@ site_name: BetonQuest German
 theme:
   name: material
   palette:
+<<<<<<< Updated upstream
     scheme: default
+=======
+    scheme: slate
+>>>>>>> Stashed changes
 
   # 404 page
   static_templates:
@@ -17,3 +21,7 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
