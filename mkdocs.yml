@@ -1,7 +1,7 @@
 site_name: BetonQuest German
 theme:
-  name: material
-  custom_dir: overrides
+  palette:
+    scheme: default
 
   # 404 page
   static_templates:
