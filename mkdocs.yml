@@ -4,12 +4,14 @@ theme:
   palette:
     - scheme: default
       toggle:
-        icon: material/weather-sunny
+        icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate 
       toggle:
-        icon: material/weather-night
+        icon: material/weather-sunny
         name: Switch to light mode
+    primary: green
+    accent: light green    
   # 404 page
   static_templates:
     - 404.html
