@@ -1,6 +1,6 @@
 site_name: BetonQuest German
 theme:
-  name: default
+  name: material
   palette:
     scheme: default
 
