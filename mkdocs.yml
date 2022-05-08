@@ -2,12 +2,16 @@ site_name: BetonQuest German
 theme:
   name: material
   palette:
-<<<<<<< Updated upstream
-    scheme: default
-=======
-    scheme: slate
->>>>>>> Stashed changes
-
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate 
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    primary: deep purple
+    accent: deep purple
   # 404 page
   static_templates:
     - 404.html
@@ -21,7 +25,3 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
