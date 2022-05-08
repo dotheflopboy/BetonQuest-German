@@ -9,9 +9,7 @@ theme:
     - scheme: slate 
       toggle:
         icon: material/weather-sunny
-        name: Switch to light mode
-    primary: green
-    accent: light green    
+        name: Switch to light mode 
   # 404 page
   static_templates:
     - 404.html
