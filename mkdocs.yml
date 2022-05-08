@@ -1,4 +1,20 @@
-site_name: BetonQuest German
-site_author: DoTheFlopBoy
-site_dir: target/docs
-docs_dir: docs
+theme:
+  name: null
+  custom_dir: mkdocs-material/material
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Necessary for search to work properly
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
