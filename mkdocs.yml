@@ -1,4 +1,5 @@
 site_name: BetonQuest German
+site_url: https://betonquest.de/
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
