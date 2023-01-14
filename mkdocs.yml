@@ -54,4 +54,5 @@ theme:
     code: Roboto Mono
 nav:
   - '🚀 Home': index.md
+  - '📑 Tutorials': Tutorials/tutorial.md
   - '📚 Documentation': Documentation/Events-List.md
